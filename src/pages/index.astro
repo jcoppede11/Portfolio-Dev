@@ -1,0 +1,36 @@
+---
+import Badge from '../components/Badge.astro'
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+	title="Portfolio de jcoppede - Desarrollador y Programador Web."
+	description="Especializado en crear todo tipo de aplicaciones."
+>
+	<main>
+		<section class="w-full mx-auto lg:w-[740px] py-36">
+			<div class="flex gap-4 items-center mb-4">
+				<img class="rounded-full shadow-lg size-16 mb-4" 
+					src="../../public/img/programmer-dalle.webp" 
+					alt="JC photo" 
+				/>
+				<Badge>Disponible para trabajar</Badge>				
+			</div>
+			<h1 class="text-dark text-5xl font-bold flex flex-row gap-x-4 pb-4">
+				Hola, me dicen Juanjo <a 
+					href="https://www.linkedin.com/in/jjcoppede/"
+					target="_blank"
+					rel="noopener"
+					class="flex justify-center items-center"
+				> 					
+				</a>
+			</h1>				
+			<h2 class="text-2xl text-wrap">
+				<span>Con mas de dos años de experiencia.</span><strong><span class="text-blue-500">
+					Desarrollador Web FrontEnd y BackEnd</span></strong>. De La Rioja, Argentina 🇦🇷. Especialista en
+					crear aplicaciones únicas.
+			</h2>
+		</section>
+	</main>
+</Layout>
