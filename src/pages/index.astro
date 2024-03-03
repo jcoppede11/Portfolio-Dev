@@ -18,19 +18,50 @@ import Layout from '../layouts/Layout.astro';
 				<Badge>Disponible para trabajar</Badge>				
 			</div>
 			<h1 class="text-dark text-5xl font-bold flex flex-row gap-x-4 pb-4">
-				Hola, me dicen Juanjo <a 
-					href="https://www.linkedin.com/in/jjcoppede/"
-					target="_blank"
-					rel="noopener"
-					class="flex justify-center items-center"
-				> 					
-				</a>
+				Hola! 
+				<span role="img" class="text-4xl movement">👋</span>
 			</h1>				
 			<h2 class="text-2xl text-wrap">
-				<span>Con mas de dos años de experiencia.</span><strong><span class="text-blue-500">
-					Desarrollador Web FrontEnd y BackEnd</span></strong>. De La Rioja, Argentina 🇦🇷. Especialista en
-					crear aplicaciones únicas.
+				<span>Cuento con +2 años de experiencia.</span><strong><span class="text-blue-500">
+					Desarrollador Web FrontEnd y BackEnd</span></strong>, de la provincia de La Rioja, Argentina 🇦🇷. Veo a mis aplicaciones como obras de arte
+					me y muevo por la innovación y la creación de mi propia marca.
 			</h2>
 		</section>
 	</main>
 </Layout>
+
+<style>
+	.movement {
+		animation-name: movement-animation; /* Nombre del elemento @keyframes */
+		animation-duration: 2.3s; /* Acelera o relentiza el movimiento */
+		animation-iteration-count: infinite; /* Cantidad de agitación */
+		transform-origin: 75% 75%;
+		display: inline-block;
+  }
+  @keyframes movement-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	10% {
+		transform: rotate(14deg);
+	}
+	20% {
+		transform: rotate(-8deg);
+	}
+	30% {
+		transform: rotate(14deg);
+	}
+	40% {
+		transform: rotate(-4deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
+	60% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+  }
+</style>
