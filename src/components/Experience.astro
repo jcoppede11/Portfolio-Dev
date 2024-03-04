@@ -1,0 +1,31 @@
+---
+import ExperienceItem from './experience/ExperienceItem.astro'
+const EXPERIENCE = [
+    {
+    
+     date: 'Marzo 2023',
+     title: 'Edelar S.A',
+     description: 'Proveedora de energía de la ciudad',
+     jobType: 'Presencial'
+    },
+    
+    {
+     date: 'Marzo 2022',
+     title: 'Educabot',
+     description: 'Educación en linea',
+     jobType: 'Remoto'
+    },
+]
+---
+
+<div class="p-5 mb-4 border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+    <ol class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
+        {
+            EXPERIENCE.map(experience => (
+                <li>
+                    <ExperienceItem {...experience} />
+                </li>
+            ))
+        }
+    </ol>
+</div>

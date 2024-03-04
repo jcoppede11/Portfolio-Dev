@@ -1,0 +1,21 @@
+---
+export interface Props {
+    date: string
+    title: string
+    description: string
+    jobType: string
+}
+const { date, title, description, jobType } = Astro.props;
+---
+
+<li>
+    <a href="#" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
+        <img class="w-12 h-12 mb-3 me-3 rounded-full sm:mb-0" src="../../../public/img/programmer-dalle.webp" alt="Jese"/>
+        <div class="text-gray-600 dark:text-gray-400">
+            <div class="text-base font-normal"><span class="font-medium text-gray-900 dark:text-white"></span>{ title }</div>
+            <div class="text-sm font-normal">{ description }</div>
+            <span class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">{ jobType }</span>
+            <time class="text-lg font-semibold text-gray-900 dark:text-white">{ date }</time>
+        </div>
+    </a>
+</li>
