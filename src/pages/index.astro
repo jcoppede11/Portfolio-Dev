@@ -1,8 +1,12 @@
 ---
-import Badge from '../components/Badge.astro'
-import Experience from '../components/Experience.astro'
+import SectionContainer from '../components/structuresContainer/SectionContainer.astro';
+import Badge from '../components/Badge.astro';
+import Experience from '../components/Experience.astro';
+import CardProjects from '../components/CardProjects.astro';
 
 import Layout from '../layouts/Layout.astro';
+import Briefcase from '../../public/svg/Briefcase.astro';
+import CodeBracket from '../../public/svg/CodeBracket.astro';
 ---
 
 <Layout 
@@ -10,10 +14,10 @@ import Layout from '../layouts/Layout.astro';
 	description="Especializado en crear todo tipo de aplicaciones."
 >
 	<main>
-		<section class="w-full mx-auto lg:w-[740px] pt-20">
+		<SectionContainer id="first">
 			<div class="flex gap-4 items-center mb-4">
 				<img class="rounded-full shadow-lg size-16 mb-4" 
-					src="../../public/img/programmer-dalle.webp" 
+					src="../../img/programmer-dalle.webp" 
 					alt="JC photo" 
 				/>
 				<Badge>Disponible para trabajar</Badge>				
@@ -27,13 +31,23 @@ import Layout from '../layouts/Layout.astro';
 				<strong><span class="text-blue-500">Desarrollador Web FrontEnd</span></strong> y <strong><span class="text-blue-500">BackEnd</span></strong>
 				<span>nacido en la provincia de La Rioja, Argentina. Actualmente trabajando en la empresa de Edelar S.A</span>
 			</h2>
-		</section>
+		</SectionContainer>
 
-		<section class="w-full mx-auto lg:w-[740px] pt-20">
-			<div class="text-2xl font-bold text-wrap mb-4">Experiencia laboral</div>			
-
+		<SectionContainer id="experience">
+			<h2 class="text-2xl font-semibold flex text-wrap mb-6 gap-x-3 items-center">
+				<Briefcase class="size-7" />
+				Experiencia laboral
+			</h2>			
 			<Experience />
-		</section>
+		</SectionContainer>
+
+		<SectionContainer id="projects">
+			<h2 class="text-2xl font-semibold flex text-wrap mb-6 gap-x-3 items-center">
+				<CodeBracket class="size-7" />
+				Proyectos creados
+			</h2>
+			<CardProjects />						
+		</SectionContainer>
 	</main>
 </Layout>
 
