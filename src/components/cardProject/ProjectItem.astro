@@ -1,0 +1,29 @@
+---
+export interface Props {    
+    img: string
+    title: string
+    description: string
+}
+const { img, title, description } = Astro.props;
+---
+
+<div class="relative flex-shrink-0 w-80">
+    <img
+        alt="Imagen de un grupo de personas maravilladas ante un glifo asombroso de ether (ETH)."        
+        src={ img }
+        loading="lazy"
+        width="260"
+        height="234"
+        decoding="async"
+        data-nimg="1"
+        class="object-cover w-full h-"
+        style="color: transparent;"
+    />
+
+    <div class="p-4">
+        <h3 class="m-0 text-2xl font-semibold">
+            <a class="text-current no-underline" href="#">{ title }</a>
+        </h3>
+        <p class="m-0 text-base leading-6">{ description }</p>
+    </div>
+</div>
