@@ -18,9 +18,9 @@ const { title, area, project, technology, description, job } = Astro.props;
     <div class="grid grid-cols-1 gap-0.5">
         <span class="block text-lg font-normal text-gray-900 dark:text-white">{ area }</span>        
         <span class="block text-sm font-normal">{ project }</span>
-        <span class="block text-sm font-normal">{ technology }</span>
+        <span class="block text-sm font-normal text-pretty">{ technology }</span>
         <span class="block text-sm font-normal">{ job }</span>            
-        <span class="block text-xs font-normal text-gray-500 dark:text-gray-400">{ description }</span>
+        <span class="block text-xs font-normal text-pretty text-gray-500 dark:text-gray-400">{ description }</span>
     </div>
     <span class=""></span>
 </li>

@@ -5,17 +5,19 @@ import Badge from '../components/Badge.astro';
 import Experience from '../components/Experience.astro';
 import CardProjects from '../components/CardProjects.astro';
 import TechnologyJob from '../components/TechnologyJob.astro';
+import About from '../components/AboutMe.astro';
 
 // Import SVG
 import Briefcase from '../../public/svg/Briefcase.astro';
 import CodeBracket from '../../public/svg/CodeBracket.astro';
 import Technology from '../../public/svg/Technology.astro';
+import Person from '../../public/svg/Person.astro';
 
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout 
-	title="Portfolio de jcoppede - Desarrollador y Programador Web."
+	title="Porfolio personal - Desarrollador y Programador Web."
 	description="Especializado en crear todo tipo de aplicaciones."
 >
 	<main>
@@ -61,6 +63,14 @@ import Layout from '../layouts/Layout.astro';
 				Proyectos creados
 			</h2>
 			<CardProjects />						
+		</SectionContainer>
+
+		<SectionContainer id="about">
+			<h2 class="text-2xl font-semibold flex text-wrap ms-2 mb-6 gap-x-3 items-center">
+				<Person class="size-7" />
+				Sobre mi
+			</h2>
+			<About />
 		</SectionContainer>
 	</main>
 </Layout>
