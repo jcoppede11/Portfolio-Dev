@@ -3,8 +3,6 @@
 import '@fontsource-variable/onest';
 
 import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
-
 interface Props {
 	title: string;
 	description: string;
@@ -19,14 +17,13 @@ const { title, description } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content={ description }/>
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/11J.jpg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{ title }</title>
 	</head>
 	<body>
 		<Header />
 		<slot />
-		<Footer />
 	</body>
 </html>
 
