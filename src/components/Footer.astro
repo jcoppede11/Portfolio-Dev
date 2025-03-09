@@ -1,0 +1,11 @@
+---
+import TextDescription from "./ui/text/TextDescription.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-100 border-t border-gray-300">
+    <div class="my-5 lg:my-7">
+        <TextDescription description={`© ${currentYear} Technology Blueleaf. Todos los derechos reservados.`} />
+    </div>
+</footer>

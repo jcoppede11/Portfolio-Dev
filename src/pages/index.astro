@@ -5,15 +5,26 @@ import Badge from '../components/Badge.astro';
 import Experience from '../components/Experience.astro';
 import CardProjects from '../components/CardProjects.astro';
 import TechnologyJob from '../components/TechnologyJob.astro';
-import About from '../components/AboutMe.astro';
+import Paragraph from '../components/ui/text/Paragraph.astro';
+import H4TitleBold from '../components/ui/text/H4TitleBold.astro';
 
 // Import SVG
 import Briefcase from '../../public/svg/Briefcase.astro';
 import CodeBracket from '../../public/svg/CodeBracket.astro';
 import Technology from '../../public/svg/Technology.astro';
-import Person from '../../public/svg/Person.astro';
 
 import Layout from '../layouts/Layout.astro';
+
+const ABOUTME = [
+    {
+        paragraph: `
+		   	¡Hola, ¿como están? Soy un desarrollador Fullstack con un fuerte enfoque en Frontend, trabajando con React, Tailwind, JavaScript y TypeScript. 
+			Me encanta crear interfaces atractivas, fluidas y accesibles, pero mi curiosidad no se queda ahí.
+			También me sumerjo en el Backend, trabajando con Node.js, Express y MySQL, optimizando APIs y asegurando que cada pieza del sistema encaje con precisión. 
+			También cuento con experiencia en servidores, configurando entornos y asegurando que todo corra sin problemas.
+  		`,
+    },
+]
 ---
 
 <Layout 
@@ -21,56 +32,37 @@ import Layout from '../layouts/Layout.astro';
 	description="Especializado en crear todo tipo de aplicaciones."
 >
 	<main>
-		<SectionContainer id="first">
-			<div class="flex gap-4 items-center mb-4">
-				<img class="rounded-full shadow-lg size-16 mb-4" 
-					src="../../img/programmer-dalle.webp" 
-					alt="JC photo" 
-				/>
+		<SectionContainer id="about-me">
+			<div class="flex gap-4 items-center mb-5">
 				<Badge>Disponible para trabajar</Badge>				
 			</div>
-			<h1 class="text-dark text-4xl font-bold flex flex-row gap-x-4 pb-4">
-				Hola, soy Juan
-				<span role="img" class="text-3xl movement">👋</span>
-			</h1>				
-			<h2 class="text-2xl text-wrap">
-				<span>Soy </span>
-				<strong><span class="text-blue-500">Desarrollador Web FrontEnd</span></strong> y <strong><span class="text-blue-500">BackEnd</span></strong>
-				<span>nacido en la provincia de La Rioja, Argentina. Actualmente trabajando en la empresa de Edelar S.A</span>
-			</h2>
+			<h3 class="text-dark text-4xl font-bold flex flex-row gap-x-4 mb-8">Juan José Coppede</h3>	
+			<Paragraph>
+				{ABOUTME.map((item) => item.paragraph)}
+			</Paragraph>			
 		</SectionContainer>
 
-		<SectionContainer id="experience">
-			<h2 class="text-2xl font-semibold flex text-wrap mb-6 gap-x-3 items-center">
-				<Briefcase class="size-7" />
-				Experiencia laboral
-			</h2>			
+		<SectionContainer id="experience">	
+			<H4TitleBold subtitle="Experiencia laboral">
+				<Briefcase slot="icon" class="size-7" />
+			</H4TitleBold>
+			
 			<Experience />
 		</SectionContainer>
 
 		<SectionContainer id="technology">
-			<h2 class="text-2xl font-semibold flex text-wrap mb-6 gap-x-3 items-center">
-				<Technology class="size-7" />
-				Manejo de tecnologías
-			</h2>
+			<H4TitleBold subtitle="Manejo de tecnologías">
+				<Technology slot="icon" class="size-7" />
+			</H4TitleBold>
 			<TechnologyJob />
 		</SectionContainer>
 
 
 		<SectionContainer id="projects">
-			<h2 class="text-2xl font-semibold flex text-wrap ms-2 mb-6 gap-x-3 items-center">
-				<CodeBracket class="size-7" />
-				Proyectos creados
-			</h2>
+			<H4TitleBold subtitle="Proyectos creados">
+				<CodeBracket slot="icon" class="size-7" />
+			</H4TitleBold>
 			<CardProjects />						
-		</SectionContainer>
-
-		<SectionContainer id="about">
-			<h2 class="text-2xl font-semibold flex text-wrap ms-2 mb-6 gap-x-3 items-center">
-				<Person class="size-7" />
-				Sobre mi
-			</h2>
-			<About />
 		</SectionContainer>
 	</main>
 </Layout>
