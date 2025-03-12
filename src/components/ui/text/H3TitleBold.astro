@@ -1,0 +1,14 @@
+---
+import { COLORS } from "../../../config/theme";
+
+interface Props {
+    title: string;
+    className?: string;
+}
+
+const { title = "", className = "" } = Astro.props;
+---
+
+<h3 class={`${COLORS.TITLE_GRAY_TEXT} text-2xl lg:text-4xl ${className}`}>
+    {title}
+</h3>

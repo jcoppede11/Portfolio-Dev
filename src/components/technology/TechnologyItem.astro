@@ -1,4 +1,6 @@
 ---
+import { COLORS } from "../../config/theme";
+
 export interface Props {
     title: string
     area: string
@@ -20,7 +22,7 @@ const { title, area, project, technology, description, job } = Astro.props;
         <span class="block text-sm font-normal">{ project }</span>
         <span class="block text-sm font-normal text-pretty">{ technology }</span>
         <span class="block text-sm font-normal">{ job }</span>            
-        <span class="block text-xs font-normal text-pretty text-gray-500 dark:text-gray-400">{ description }</span>
+        <span class=`block text-xs font-normal text-pretty ${COLORS.GRAY_TEXT} dark:text-gray-400`>{ description }</span>
     </div>
     <span class=""></span>
 </li>

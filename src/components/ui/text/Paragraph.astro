@@ -1,11 +1,9 @@
 ---
-interface Props {
-    className?: string;
-}
+import { COLORS } from "../../../config/theme";
 
-const { className = "" } = Astro.props;
+const { className = "", text = "" } = Astro.props;
 ---
 
-<p class={`text-lg text-gray-700 mt-4 ${className}`}>
-    <slot />
+<p class={`${COLORS.PARAGRAPH_GRAY_TEXT} ${className}`}>
+    <slot>{text}</slot> 
 </p>

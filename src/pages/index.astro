@@ -1,6 +1,9 @@
 ---
+import { COLORS } from "../config/theme";
+
 // Import COMPONENTS
 import SectionContainer from '../components/structuresContainer/SectionContainer.astro';
+import GridContainer from '../components/structuresContainer/GridContainer.astro';
 import Badge from '../components/Badge.astro';
 import Experience from '../components/Experience.astro';
 import CardProjects from '../components/CardProjects.astro';
@@ -14,6 +17,7 @@ import CodeBracket from '../../public/svg/CodeBracket.astro';
 import Technology from '../../public/svg/Technology.astro';
 
 import Layout from '../layouts/Layout.astro';
+import H3TitleBold from '../components/ui/text/H3TitleBold.astro';
 
 const ABOUTME = [
     {
@@ -32,37 +36,36 @@ const ABOUTME = [
 	description="Especializado en crear todo tipo de aplicaciones."
 >
 	<main>
-		<SectionContainer id="about-me">
-			<div class="flex gap-4 items-center mb-5">
-				<Badge>Disponible para trabajar</Badge>				
-			</div>
-			<h3 class="text-dark text-4xl font-bold flex flex-row gap-x-4 mb-8">Juan José Coppede</h3>	
+		<SectionContainer id="jjc-about-me">
+			<GridContainer>
+				<Badge text='Disponible para trabajar' />				
+				<H3TitleBold title="Juan José Coppede"/>
+			</GridContainer>		
+
 			<Paragraph>
 				{ABOUTME.map((item) => item.paragraph)}
 			</Paragraph>			
 		</SectionContainer>
 
-		<SectionContainer id="experience">	
-			<H4TitleBold subtitle="Experiencia laboral">
-				<Briefcase slot="icon" class="size-7" />
-			</H4TitleBold>
-			
-			<Experience />
+		<SectionContainer id="jjc-experience">
+			<GridContainer>
+				<H4TitleBold title="Experiencia laboral"><Briefcase slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<Experience />
+			</GridContainer>
 		</SectionContainer>
 
-		<SectionContainer id="technology">
-			<H4TitleBold subtitle="Manejo de tecnologías">
-				<Technology slot="icon" class="size-7" />
-			</H4TitleBold>
-			<TechnologyJob />
+		<SectionContainer id="jjc-technology">
+			<GridContainer>
+				<H4TitleBold title="Manejo de tecnologías"><Technology slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<TechnologyJob />
+			</GridContainer>
 		</SectionContainer>
 
-
-		<SectionContainer id="projects">
-			<H4TitleBold subtitle="Proyectos creados">
-				<CodeBracket slot="icon" class="size-7" />
-			</H4TitleBold>
-			<CardProjects />						
+		<SectionContainer id="jjc-projects">
+			<GridContainer>
+				<H4TitleBold title="Proyectos creados"><CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<CardProjects />
+			</GridContainer>
 		</SectionContainer>
 	</main>
 </Layout>
