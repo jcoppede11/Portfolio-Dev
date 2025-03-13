@@ -1,28 +1,19 @@
 ---
 import TechnologyItem from './technology/TechnologyItem.astro'
 const TECHNOLOGY = [
-    {
-        title: 'Automatización de tareas con CRON',
-        area: 'Administración de sistemas, scripting, gestión de infraestructura.',
-        project: 'Backup de Base de Datos de Producción Semanal',
-        technology: 'Crontab - Servidores Linux',
-        description: 'Implementé crones para automatizar el backup semanal de la base de datos de producción, mejorando la eficiencia y la confiabilidad del proceso.',
-        job: 'Edelar S.A.',
-    },
-    
-    {
-        title: 'Purchases - Desarrollo Web',
-        area: 'Administración de sistemas, scripting, gestión de infraestructura.',
-        project: 'Desarrollo Front-End del proyecto "Purchases"',
-        technology: 'HTML y CSS | Frameworks Css: Bootstrap v5.3 | JavaScript (ES6) | GIT & GitHub',
-        description: 'En este proyecto, colaboré en el desarrollo de la interfaz de usuario (responsiva) para el sistema de compras interno "Purchases". El desarrollo se gestionó a través de GIT & GitHub, facilitando la colaboración y el seguimiento del progreso del proyecto.',
-        job: 'Edelar S.A.',
-    },
+    { text: 'HTML, CSS3, SASS, Flexbox, Grid.' },
+    { text: 'Bootstrap, Tailwind, MUI.' },
+    { text: 'EJS, ES6, Typescript.' },
+    { text: 'React, NextJS, Astro.' },
+    { text: 'Git, GitHub.' },
+    { text: 'NodeJS, ExpressJS, MySQL, Postman, Zod, Sequelize, Prisma.' },
+    { text: 'Debian GNU/Linux, Scripts Bash, Digital Ocean, Cloudflare.' },
+    { text: 'MVC, POO, Clean Code.' },
 ]
 ---
 
 <div>
-    <ol class="relative border-s border-gray-200 dark:border-gray-700">        
+    <ol class="relative list-disc space-y-3 pl-8">        
         {
             TECHNOLOGY.map(technology => (
                 <li>

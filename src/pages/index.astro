@@ -15,9 +15,11 @@ import H4TitleBold from '../components/ui/text/H4TitleBold.astro';
 import Briefcase from '../../public/svg/Briefcase.astro';
 import CodeBracket from '../../public/svg/CodeBracket.astro';
 import Technology from '../../public/svg/Technology.astro';
+import Person from '../../public/svg/Person.astro';
 
 import Layout from '../layouts/Layout.astro';
 import H3TitleBold from '../components/ui/text/H3TitleBold.astro';
+import ContactItem from "../components/contact/ContactItem.astro";
 
 const ABOUTME = [
     {
@@ -56,7 +58,7 @@ const ABOUTME = [
 
 		<SectionContainer id="jjc-technology">
 			<GridContainer>
-				<H4TitleBold title="Manejo de tecnologías"><Technology slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<H4TitleBold title="Tecnologías y habilidades"><Technology slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
 				<TechnologyJob />
 			</GridContainer>
 		</SectionContainer>
@@ -65,6 +67,12 @@ const ABOUTME = [
 			<GridContainer>
 				<H4TitleBold title="Proyectos creados"><CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
 				<CardProjects />
+			</GridContainer>
+		</SectionContainer>
+		<SectionContainer id="jjc-contact">
+			<GridContainer>
+				<H4TitleBold title="¿Como encontrarme?"><Person slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<ContactItem />
 			</GridContainer>
 		</SectionContainer>
 	</main>

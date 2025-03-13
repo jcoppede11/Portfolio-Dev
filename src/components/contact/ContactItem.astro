@@ -1,0 +1,23 @@
+---
+import Paragraph from "../ui/text/Paragraph.astro";
+
+export const CONTACT = [
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/jjcoppede/", handle: "@jjcoppede" },
+  { name: "GitHub", url: "https://github.com/jcoppede11", handle: "@jcoppede11" },
+  { 
+    name: "Correo electrónico", 
+    url: "mailto:jcoppede11@gmail.com?subject=Contacto&body=Hola,%20me%20gustaría%20hablar%20contigo.", 
+    handle: "jcoppede11@gmail.com" 
+  },
+];
+---
+
+<ul class="space-y-2 list-disc">
+    {CONTACT.map((item) => (
+      <li>
+        <Paragraph>
+          {item.name}: <a href={item.url} class="underline">{item.handle}</a>
+        </Paragraph>
+      </li>
+    ))}
+</ul>

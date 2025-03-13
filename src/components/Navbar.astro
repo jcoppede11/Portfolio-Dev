@@ -2,15 +2,15 @@
 import NavLinks from "./ui/text/NavLinks.astro";
 
 const navLinks = [
-  { href: "#about-me", label: "Sobre mí" },
-  { href: "#experience", label: "Experiencia laboral" },
-  { href: "#technology", label: "Tecnologías" },
-  { href: "#projects", label: "Proyectos" },
-  { href: "#contact", label: "Contacto" }
+  { href: "#jjc-about-me", label: "Sobre mí" },
+  { href: "#jjc-experience", label: "Experiencia laboral" },
+  { href: "#jjc-technology", label: "Tecnologías" },
+  { href: "#jjc-projects", label: "Proyectos" },
+  { href: "#jjc-contact", label: "Contacto" }
 ];
 ---
 
-<nav class="sticky top-0 z-10 bg-slate-50/90 dark:bg-slate-700/90 backdrop-blur-sm ring-1 ring-slate-900/10 dark:ring-black/10 flex justify-center items-center py-7 w-full">
+<nav class="sticky top-0 z-10 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10 flex justify-center items-center py-7 w-full">
     <div class="flex flex-row gap-x-10 justify-center opacity-80 mx-auto w-[1120px]">
         {navLinks.map((link) => (
             <NavLinks href={link.href} label={link.label} />
