@@ -4,4 +4,6 @@ export const COLORS = {
     ICON_SIZE: "size-7",
     GRAY_TEXT_SECONDARY: "text-gray-500 block text-xs font-normal",
     EXP_TEXT_SIZE: "block text-sm font-normal",
+    LIST_DISC: "list-disc space-y-3 marker:text-gray-700 pl-14",
+    JUSTIFY_CENTER: "flex justify-center items-center",
 };

@@ -1,25 +1,19 @@
 ---
 import { COLORS } from "../../config/theme";
-export interface Props {
+interface Props {
     job: string
     title: string
     date: string
-    description: string
     jobType: string
 }
-const { job, title, date, description, jobType } = Astro.props;
+const { job, title, date, jobType } = Astro.props;
 ---
 
-<li class="mb-10 ms-6">    
-    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
-    <span class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-white">
-    </span>
-    <span class="block text-lg font-semibold text-gray-900">{ job }</span>
-    <div class="grid grid-cols-1 gap-0.5">
+<li>            
+    <span class=`block text-lg ${COLORS.TITLE_GRAY_TEXT}`>{ job }</span>
+    <div class="grid grid-cols-1 gap-1">
         <span class=`${COLORS.EXP_TEXT_SIZE}`>{ title }</span>
-        <span class=`${COLORS.EXP_TEXT_SIZE}`>{ description }</span>
         <span class=`${COLORS.GRAY_TEXT_SECONDARY}`>{ jobType }</span>
         <time class=`${COLORS.GRAY_TEXT_SECONDARY}`>{ date }</time>            
     </div>
-    <span class=""></span>
 </li>

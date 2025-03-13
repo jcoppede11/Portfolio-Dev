@@ -1,5 +1,7 @@
 ---
 import TechnologyItem from './technology/TechnologyItem.astro'
+import OrderList from "./ui/list/OrderList.astro";
+
 const TECHNOLOGY = [
     { text: 'HTML, CSS3, SASS, Flexbox, Grid.' },
     { text: 'Bootstrap, Tailwind, MUI.' },
@@ -12,14 +14,8 @@ const TECHNOLOGY = [
 ]
 ---
 
-<div>
-    <ol class="relative list-disc space-y-3 pl-8">        
-        {
-            TECHNOLOGY.map(technology => (
-                <li>
-                    <TechnologyItem {...technology} />
-                </li>
-            ))
-        }
-    </ol>
-</div>
+<OrderList>
+    {
+        TECHNOLOGY.map(technology => ( <TechnologyItem {...technology} /> ))
+    }    
+</OrderList>

@@ -1,0 +1,24 @@
+---
+import ProjectItem from './project/ProjectItem.astro'
+const PROJECT = [
+    {
+        img: '../../img/ethereum-1.webp',
+        title: 'Learning management system',    
+        description: 'Son tres proyectos, una Landing Page, el sistema LMS y una Backoffice.',
+        alt: 'Imagen de Ethereum'
+    },
+    
+    {
+        img: '../../img/hederagraphvsblock-1.webp',
+        title: 'Seleccionar una cartera',    
+        description: 'Una cartera permite que se conecte a Ethereum y administre sus fondos.',
+        alt: 'Imagen de una cartera'
+    }
+]
+---
+
+<div class="flex flex-row border border-gray-200 rounded-md overflow-hidden shadow-md mb-8">
+    {
+        PROJECT.map(project => ( <ProjectItem {...project} /> ))
+    }
+</div>

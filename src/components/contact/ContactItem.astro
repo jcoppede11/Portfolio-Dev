@@ -1,4 +1,5 @@
 ---
+import { COLORS } from "../../config/theme";
 import Paragraph from "../ui/text/Paragraph.astro";
 
 export const CONTACT = [
@@ -12,7 +13,7 @@ export const CONTACT = [
 ];
 ---
 
-<ul class="space-y-2 list-disc">
+<ul class=`${COLORS.LIST_DISC}`>
     {CONTACT.map((item) => (
       <li>
         <Paragraph>

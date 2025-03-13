@@ -1,40 +1,33 @@
 ---
 import ExperienceItem from './experience/ExperienceItem.astro'
+import OrderList from "./ui/list/OrderList.astro";
+
 const EXPERIENCE = [
     {
         job: 'Desarrollador de Software',
         title: 'Edelar S.A.U · Jornada completa',
         date: 'Julio 2023 · Actualidad',
-        description: 'Proveedora de energía de la ciudad',
         jobType: 'La Rioja, Argentina - Presencial',
     },
 
     {
         job: 'Desarrollador de Software',
         title: 'Proyecto Freelance - Plataforma E-Learning',
-        date: 'Diciembre 2024 · Actualidad',
-        description: 'Plataforma de educación en linea para un equipo de profesionales en psicología',
+        date: 'Diciembre 2024 · Actualidad',        
         jobType: 'La Rioja, Argentina - Presencial',
     },
     
     {
         job: 'Analista en Implementación de Software',
         title: 'Educabot · Jornada completa',
-        date: 'Abril 2022 - Marzo 2023 · 1 año',
-        description: 'Educación en linea',
+        date: 'Abril 2022 - Marzo 2023 · 1 año',        
         jobType: 'Buenos Aires, Argentina - En remoto'
     },
 ]
 ---
 
-<div>
-    <ol class="relative border-s border-gray-200">        
-        {
-            EXPERIENCE.map(experience => (
-                <li>
-                    <ExperienceItem {...experience} />
-                </li>
-            ))
-        }
-    </ol>
-</div>
+<OrderList className='space-y-8'>
+    {
+        EXPERIENCE.map(experience => ( <ExperienceItem {...experience} /> ))
+    }
+</OrderList>
