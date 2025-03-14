@@ -1,0 +1,28 @@
+---
+import { COLORS } from "../../config/theme";
+
+export interface Props {
+    title: string
+    area: string
+    project: string
+    technology: string
+    description: string
+    job: string
+}
+const { title, area, project, technology, description, job } = Astro.props;
+---
+
+<li class="mb-10 ms-6">    
+    <div class="absolute w-6 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+    <span class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+    </span>
+    <span class="block text-lg font-semibold text-gray-900 dark:text-white">{ title }</span>
+    <div class="grid grid-cols-1 gap-0.5">
+        <span class="block text-lg font-normal text-gray-900 dark:text-white">{ area }</span>        
+        <span class="block text-sm font-normal">{ project }</span>
+        <span class="block text-sm font-normal text-pretty">{ technology }</span>
+        <span class="block text-sm font-normal">{ job }</span>            
+        <span class=`block text-xs font-normal text-pretty ${COLORS.GRAY_TEXT} dark:text-gray-400`>{ description }</span>
+    </div>
+    <span class=""></span>
+</li>

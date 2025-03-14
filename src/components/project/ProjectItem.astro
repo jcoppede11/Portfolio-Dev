@@ -1,19 +1,23 @@
 ---
+import Paragraph from '../ui/text/Paragraph.astro';
+
 interface Props {
     title: string;
     description: string;
+    technology: string;
     img: string;
     alt: string;
 }
 
-const { title, description, img, alt } = Astro.props;
+const { title, description, technology, img, alt } = Astro.props;
 ---
 
-<div class="max-w-sm rounded-lg shadow-lg overflow-hidden bg-white transition-transform transform hover:scale-105">
-    <img class="w-full h-40 object-cover" src={img} alt={alt} />
+<div class="min-w-full rounded-lg shadow-lg overflow-hidden bg-white transition-all duration-300 ease-out transform hover:scale-[1.06] hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between">
+    <img class="w-full h-auto max-h-64 object-cover object-center aspect-auto" src={img} alt={alt} />
 
-    <div class="p-4">
+    <div class="p-6 flex-grow space-y-2">
         <h2 class="text-xl font-semibold text-gray-800">{title}</h2>
-        <p class="text-gray-600 text-sm mt-2">{description}</p>
+        <Paragraph>{description}</Paragraph>
+        <Paragraph><span class="font-semibold">Tecnologías: </span>{technology}</Paragraph>
     </div>
 </div>
