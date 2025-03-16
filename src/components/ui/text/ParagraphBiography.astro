@@ -1,0 +1,9 @@
+---
+import { COLORS } from "../../../config/theme";
+
+const { className = "", text = "" } = Astro.props;
+---
+
+<p class={`${COLORS.PARAGRAPH_BIOGRAPHY_GRAY_TEXT} ${className}`}>
+    <slot>{text}</slot> 
+</p>

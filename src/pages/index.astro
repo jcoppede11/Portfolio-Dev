@@ -1,41 +1,41 @@
 ---
-import { COLORS } from "../config/theme";
-
 // Import COMPONENTS
 import SectionContainer from '../components/structuresContainer/SectionContainer.astro';
 import GridContainer from '../components/structuresContainer/GridContainer.astro';
-import Badge from '../components/Badge.astro';
 import Experience from '../components/Experience.astro';
 import Project from '../components/Project.astro';
 import TechnologyJob from '../components/TechnologyJob.astro';
-import Paragraph from '../components/ui/text/Paragraph.astro';
+import ContactItem from "../components/contact/ContactItem.astro";
+import Badge from '../components/Badge.astro';
+import ParagraphBiography from '../components/ui/text/ParagraphBiography.astro';
+import H3TitleBold from '../components/ui/text/H3TitleBold.astro';
 import H4TitleBold from '../components/ui/text/H4TitleBold.astro';
+import Layout from '../layouts/Layout.astro';
 
 // Import SVG
-import Briefcase from '../../public/svg/Briefcase.astro';
-import CodeBracket from '../../public/svg/CodeBracket.astro';
-import Technology from '../../public/svg/Technology.astro';
-import Person from '../../public/svg/Person.astro';
+import Briefcase from '../components/ui/svg/Briefcase.astro';
+import CodeBracket from '../components/ui/svg/CodeBracket.astro';
+import Technology from '../components/ui/svg/Technology.astro';
+import Person from '../components/ui/svg/Person.astro';
 
-import Layout from '../layouts/Layout.astro';
-import H3TitleBold from '../components/ui/text/H3TitleBold.astro';
-import ContactItem from "../components/contact/ContactItem.astro";
+import { COLORS } from "../config/theme";
 
+// Import DATA
 const ABOUTME = [
     {
         paragraph: `
-		   	¡Hola, ¿como están? Soy un desarrollador Fullstack con un fuerte enfoque en Frontend, trabajando con React, Tailwind, JavaScript y TypeScript. 
-			Me encanta crear interfaces atractivas, fluidas y accesibles, pero mi curiosidad no se queda ahí.
-			También me sumerjo en el Backend, trabajando con Node.js, Express y MySQL, optimizando APIs y asegurando que cada pieza del sistema encaje con precisión. 
-			También cuento con experiencia en servidores, configurando entornos y asegurando que todo corra sin problemas.
+		   	Hola, soy Desarrollador FullStack con un fuerte enfoque en Frontend. Trabajo actualmente con React, Tailwind y TypeScript. 
+			Disfruto creando interfaces atractivas y fluidas, pero mi curiosidad no termina ahí.
+			Además, trabajo con Node.js, Express y MySQL, enfocándome en la optimización y el buen funcionamiento de las APIs. 
+			No solo pienso en el código, sino en cómo cada parte del sistema se conecta y trabaja en conjunto.
   		`,
     },
 ]
 ---
 
 <Layout 
-	title="Juan J. Coppede - Desarrollador y Programador Web."
-	description="Especializado en crear todo tipo de aplicaciones."
+	title="Juan J. Coppede - Software Developer."
+	description="Desarrollando aplicaciones web eficientes y escalables"
 >
 	<main>
 		<SectionContainer id="jjc-about-me">
@@ -44,9 +44,9 @@ const ABOUTME = [
 				<H3TitleBold title="Juan José Coppede"/>
 			</GridContainer>		
 
-			<Paragraph>
+			<ParagraphBiography>
 				{ABOUTME.map((item) => item.paragraph)}
-			</Paragraph>			
+			</ParagraphBiography>			
 		</SectionContainer>
 
 		<SectionContainer id="jjc-experience">
@@ -77,39 +77,3 @@ const ABOUTME = [
 		</SectionContainer>
 	</main>
 </Layout>
-
-<style>
-	.movement {
-		animation-name: movement-animation; /* Nombre del elemento @keyframes */
-		animation-duration: 2.3s; /* Acelera o relentiza el movimiento */
-		animation-iteration-count: infinite; /* Cantidad de agitación */
-		transform-origin: 75% 75%;
-		display: inline-block;
-  }
-  @keyframes movement-animation {
-	0% {
-		transform: rotate(0deg);
-	}
-	10% {
-		transform: rotate(14deg);
-	}
-	20% {
-		transform: rotate(-8deg);
-	}
-	30% {
-		transform: rotate(14deg);
-	}
-	40% {
-		transform: rotate(-4deg);
-	}
-	50% {
-		transform: rotate(10deg);
-	}
-	60% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(0deg);
-	}
-  }
-</style>

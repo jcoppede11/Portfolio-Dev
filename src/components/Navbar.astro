@@ -11,8 +11,8 @@ const navLinks = [
 ];
 ---
 
-<nav class=`sticky top-0 z-10 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10 ${COLORS.JUSTIFY_CENTER} items-center py-7 w-full`>
-    <div class=`${COLORS.JUSTIFY_CENTER} flex-row gap-x-10 opacity-80 mx-auto w-[1120px]`>
+<nav class=`sticky top-0 z-10 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10 ${COLORS.JUSTIFY_CENTER} items-center py-7 px-9 w-full`>
+    <div class=`${COLORS.JUSTIFY_CENTER} flex-row flex-wrap gap-y-3 gap-x-10 opacity-80 mx-auto w-[1120px]`>
         {navLinks.map((link) => (
             <NavLinks href={link.href} label={link.label} />
         ))}
