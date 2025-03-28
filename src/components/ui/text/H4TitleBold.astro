@@ -1,5 +1,5 @@
 ---
-import { COLORS } from "../../../config/theme";
+import { COLORS } from "../../../config/globalStyles";
 
 interface Props {
   title: string;
@@ -9,6 +9,9 @@ interface Props {
 const { title, className = "" } = Astro.props;
 ---
 
-<h4 class={`${COLORS.TITLE_GRAY_TEXT} text-lg lg:text-2xl flex gap-x-3 ${className}`}>
-    <slot name="icon" /> {title}
+<h4
+  class={`${COLORS.TITLE_GRAY_TEXT} text-lg lg:text-2xl flex gap-x-3 ${className}`}
+>
+  <slot name="icon" />
+  {title}
 </h4>

@@ -1,20 +1,25 @@
 ---
-import { COLORS } from "../config/theme";
+import { FLEX } from "../config/globalStyles";
 import NavLinks from "./ui/text/NavLinks.astro";
 
 const navLinks = [
-  { href: "#jjc-about-me", label: "Sobre mí" },
-  { href: "#jjc-experience", label: "Experiencia laboral" },
-  { href: "#jjc-technology", label: "Tecnologías" },
-  { href: "#jjc-projects", label: "Proyectos" },
-  { href: "#jjc-contact", label: "Contacto" }
+    { href: "#jjc-about-me", label: "Sobre mí" },
+    { href: "#jjc-experience", label: "Experiencia laboral" },
+    { href: "#jjc-technology", label: "Tecnologías" },
+    { href: "#jjc-projects", label: "Proyectos" },
+    { href: "#jjc-contact", label: "Contacto" },
 ];
+
+const navbarClasses = `${FLEX.FLEX_JUSTIFY_CENTER} sticky top-0 z-10 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10 py-7 px-9 w-full`;
+const flexGridClasses = `${FLEX.FLEX_JUSTIFY_CENTER} mx-auto flex-row flex-wrap gap-y-3 gap-x-10 opacity-80 w-[1120px]`;
 ---
 
-<nav class=`sticky top-0 z-10 bg-slate-50/90 backdrop-blur-sm ring-1 ring-slate-900/10 ${COLORS.JUSTIFY_CENTER} items-center py-7 px-9 w-full`>
-    <div class=`${COLORS.JUSTIFY_CENTER} flex-row flex-wrap gap-y-3 gap-x-10 opacity-80 mx-auto w-[1120px]`>
-        {navLinks.map((link) => (
-            <NavLinks href={link.href} label={link.label} />
-        ))}
+<nav class=`${navbarClasses}`>
+    <div class=`${flexGridClasses}`>
+        {
+            navLinks.map((link) => (
+                <NavLinks href={link.href} label={link.label} />
+            ))
+        }
     </div>
 </nav>

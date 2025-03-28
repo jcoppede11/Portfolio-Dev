@@ -6,5 +6,12 @@ export const COLORS = {
     GRAY_TEXT_SECONDARY: "text-gray-500 block text-sm font-normal",
     EXP_TEXT_SIZE: "block text-md font-normal",
     LIST_DISC: "list-disc space-y-3 marker:text-gray-700 pl-14",
-    JUSTIFY_CENTER: "flex justify-center items-center",
 };
+
+export const FLEX = {
+    FLEX_JUSTIFY_CENTER: "flex justify-center items-center",
+}
+
+export const MARGIN = {
+    MARGIN_AUTO: "m-auto",
+}

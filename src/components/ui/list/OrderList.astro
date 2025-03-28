@@ -1,12 +1,12 @@
 ---
-import { COLORS } from '../../../config/theme';
+import { COLORS } from "../../../config/globalStyles";
 
 interface Props {
-    className?: string
+    className?: string;
 }
 const { className } = Astro.props;
 ---
 
 <ol class=`${COLORS.LIST_DISC} ${className}`>
     <slot />
-</ol>        
+</ol>

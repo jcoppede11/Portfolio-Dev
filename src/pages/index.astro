@@ -1,78 +1,80 @@
 ---
+import { COLORS } from "../config/globalStyles";
+
 // Import COMPONENTS
-import SectionContainer from '../components/structuresContainer/SectionContainer.astro';
-import GridContainer from '../components/structuresContainer/GridContainer.astro';
-import Experience from '../components/Experience.astro';
-import Project from '../components/Project.astro';
-import TechnologyJob from '../components/TechnologyJob.astro';
-import ContactItem from "../components/contact/ContactItem.astro";
-import Badge from '../components/Badge.astro';
-import ParagraphBiography from '../components/ui/text/ParagraphBiography.astro';
-import H3TitleBold from '../components/ui/text/H3TitleBold.astro';
-import H4TitleBold from '../components/ui/text/H4TitleBold.astro';
-import Layout from '../layouts/Layout.astro';
+import SectionContainer from "../components/structuresContainer/SectionContainer.astro";
+import GridContainer from "../components/structuresContainer/GridContainer.astro";
+import Experience from "../components/Experience.astro";
+import Project from "../components/Project.astro";
+import TechnologyJob from "../components/TechnologyJob.astro";
+import Badge from "../components/Badge.astro";
+import H3TitleBold from "../components/ui/text/H3TitleBold.astro";
+import H4TitleBold from "../components/ui/text/H4TitleBold.astro";
+import Layout from "../layouts/Layout.astro";
+import ContactItems from "../components/contact/AnimatedList";
+import AnimatedBiography from "../components/biography/AnimatedBiography";
 
 // Import SVG
-import Briefcase from '../components/ui/svg/Briefcase.astro';
-import CodeBracket from '../components/ui/svg/CodeBracket.astro';
-import Technology from '../components/ui/svg/Technology.astro';
-import Person from '../components/ui/svg/Person.astro';
-
-import { COLORS } from "../config/theme";
+import Briefcase from "../components/ui/svg/Briefcase.astro";
+import CodeBracket from "../components/ui/svg/CodeBracket.astro";
+import Technology from "../components/ui/svg/Technology.astro";
+import Person from "../components/ui/svg/Person.astro";
 
 // Import DATA
-const ABOUTME = [
-    {
-        paragraph: `
-		   	Hola, soy Desarrollador FullStack con un fuerte enfoque en Frontend. Trabajo actualmente con React, Tailwind y TypeScript. 
-			Disfruto creando interfaces atractivas y fluidas, pero mi curiosidad no termina ahí.
-			Además, trabajo con Node.js, Express y MySQL, enfocándome en la optimización y el buen funcionamiento de las APIs. 
-			No solo pienso en el código, sino en cómo cada parte del sistema se conecta y trabaja en conjunto.
-  		`,
-    },
-]
+import userData from '../constants/userData.json';
+import biographyData from '../constants/biographyData.json';
+
+const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(Boolean).map(l => l + ".");
 ---
 
-<Layout 
-	title="Juan J. Coppede - Software Developer."
-	description="Desarrollando aplicaciones web eficientes y escalables"
->
+<Layout title="Juan J. Coppede - Software Developer." description="Desarrollando aplicaciones web eficientes y escalables">
 	<main>
 		<SectionContainer id="jjc-about-me">
 			<GridContainer>
-				<Badge text='Disponible para trabajar' />				
-				<H3TitleBold title="Juan José Coppede"/>
-			</GridContainer>		
+				<Badge text="Disponible para trabajar" />
+				<H3TitleBold title="Juan José Coppede" />
+			</GridContainer>
 
-			<ParagraphBiography>
-				{ABOUTME.map((item) => item.paragraph)}
-			</ParagraphBiography>			
+			<AnimatedBiography client:load lines={lines} />
 		</SectionContainer>
 
 		<SectionContainer id="jjc-experience">
 			<GridContainer>
-				<H4TitleBold title="Experiencia laboral"><Briefcase slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<H4TitleBold title="Experiencia laboral">
+					<Briefcase slot="icon" class=`${COLORS.ICON_SIZE}` />
+				</H4TitleBold>
+
 				<Experience />
 			</GridContainer>
 		</SectionContainer>
 
 		<SectionContainer id="jjc-technology">
 			<GridContainer>
-				<H4TitleBold title="Tecnologías y habilidades"><Technology slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<H4TitleBold title="Tecnologías y habilidades">
+					<Technology slot="icon" class=`${COLORS.ICON_SIZE}` />
+				</H4TitleBold>
+
 				<TechnologyJob />
 			</GridContainer>
 		</SectionContainer>
 
 		<SectionContainer id="jjc-projects">
 			<GridContainer>
-				<H4TitleBold title="Proyectos en desarrollo"><CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
+				<H4TitleBold title="Proyectos en desarrollo">
+					<CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` />
+				</H4TitleBold>
+
 				<Project />
 			</GridContainer>
 		</SectionContainer>
+
 		<SectionContainer id="jjc-contact">
 			<GridContainer>
-				<H4TitleBold title="¿Como encontrarme?"><Person slot="icon" class=`${COLORS.ICON_SIZE}` /></H4TitleBold>
-				<ContactItem />
+				<H4TitleBold title="¿Como encontrarme?">
+					<Person slot="icon" class=`${COLORS.ICON_SIZE}` />
+				</H4TitleBold>
+
+				<ContactItems client:visible items={userData} />
 			</GridContainer>
 		</SectionContainer>
 	</main>

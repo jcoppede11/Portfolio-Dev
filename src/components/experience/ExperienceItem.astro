@@ -1,20 +1,21 @@
 ---
-import { COLORS } from "../../config/theme";
+import { COLORS } from "../../config/globalStyles";
 interface Props {
-    job: string
-    title: string
-    date: string
-    jobType: string
+    job: string;
+    title: string;
+    date: string;
+    jobType: string;
 }
 const { job, title, date, jobType } = Astro.props;
 ---
 
-<li>            
-    <span class={`block text-md lg:text-lg mb-2 ${COLORS.TITLE_GRAY_TEXT}`}>{ job }</span>
+<li>
+    <span class={`block text-md lg:text-lg mb-2 ${COLORS.TITLE_GRAY_TEXT}`}
+        >{job}</span
+    >
     <div class="grid grid-cols-1 gap-2">
-        <span class='block text-sm lg:text-base font-normal'>{ title }</span>
-        <span class={`${COLORS.GRAY_TEXT_SECONDARY}`}>{ jobType }</span>
-        <time class={`${COLORS.GRAY_TEXT_SECONDARY} mt-1`}>{ date }</time>            
+        <span class="block text-sm lg:text-base font-normal">{title}</span>
+        <span class={`${COLORS.GRAY_TEXT_SECONDARY}`}>{jobType}</span>
+        <time class={`${COLORS.GRAY_TEXT_SECONDARY} mt-1`}>{date}</time>
     </div>
 </li>
-
