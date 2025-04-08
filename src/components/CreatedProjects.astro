@@ -1,0 +1,18 @@
+---
+import CreatedProjectItem from './project/CreatedProjectItem.astro'
+const PROJECT = [
+    {
+        title: 'Bl-React-Hook-Form',
+        description: 'Proyecto frontend que utiliza la librería React-Hook-Form junto a Zod y TypeScript, que combina validaciones robustas y tipado estático.',
+        technology: 'React, Tailwind, TypeScript, React-Hook-Form y Zod.',
+        alt: 'Imagen de formulario de registro',
+        img: '../../img/img-03.png'
+    },
+]
+---
+
+<div class="flex flex-wrap justify-center gap-14 px6">
+    {
+        PROJECT.map(project => ( <CreatedProjectItem {...project} /> ))
+    }
+</div>

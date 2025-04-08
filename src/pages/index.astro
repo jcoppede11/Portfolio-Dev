@@ -6,6 +6,7 @@ import SectionContainer from "../components/structuresContainer/SectionContainer
 import GridContainer from "../components/structuresContainer/GridContainer.astro";
 import Experience from "../components/Experience.astro";
 import Project from "../components/Project.astro";
+import CreatedProjects from "../components/CreatedProjects.astro";
 import TechnologyJob from "../components/TechnologyJob.astro";
 import Badge from "../components/Badge.astro";
 import H3TitleBold from "../components/ui/text/H3TitleBold.astro";
@@ -55,6 +56,16 @@ const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(B
 				</H4TitleBold>
 
 				<TechnologyJob />
+			</GridContainer>
+		</SectionContainer>
+
+		<SectionContainer id="jjc-projects">
+			<GridContainer>
+				<H4TitleBold title="Proyectos creados">
+					<CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` />
+				</H4TitleBold>
+
+				<CreatedProjects />
 			</GridContainer>
 		</SectionContainer>
 
