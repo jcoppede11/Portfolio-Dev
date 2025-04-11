@@ -1,4 +1,5 @@
 ---
+import { TEXT } from '../../config/globalStyles';
 import Paragraph from '../ui/text/Paragraph.astro';
 
 interface Props {
@@ -16,7 +17,7 @@ const { title, description, technology, img, alt } = Astro.props;
     <img class="w-full h-auto max-h-64 object-cover object-center aspect-auto" src={img} alt={alt} />
 
     <div class="p-6 flex-grow space-y-2">
-        <h2 class="text-lg lg:text-2xl font-semibold text-gray-800">{title}</h2>
+        <h2 class={`${TEXT.TEXT_DEFAULT} text-lg lg:text-2xl font-semibold`}>{title}</h2>
         <Paragraph>{description}</Paragraph>
         <Paragraph><span class="font-semibold">Tecnologías: </span>{technology}</Paragraph>
     </div>

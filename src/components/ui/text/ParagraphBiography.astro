@@ -1,9 +1,9 @@
 ---
-import { COLORS } from "../../../config/globalStyles";
+import { TEXT } from "../../../config/globalStyles";
 
 const { className = "", text = "" } = Astro.props;
 ---
 
-<p class={`${COLORS.PARAGRAPH_BIOGRAPHY_GRAY_TEXT} ${className}`}>
+<p class={`${TEXT.TEXT_DEFAULT} leading-relaxed text-balance text-sm lg:text-base lg:leading-loose ${className}`}>
     <slot>{text}</slot>
 </p>

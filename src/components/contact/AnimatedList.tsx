@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { COLORS } from "../../config/globalStyles";
+import { TEXT } from "../../config/globalStyles";
 
 const container = {
     hidden: {},
@@ -23,7 +23,7 @@ export default function ContactItems({ items }: { items: ContactItem[] }) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.3 }}
-            className={`${COLORS.PARAGRAPH_GRAY_TEXT } list-disc space-y-3 pl-14`}
+            className={`${TEXT.TEXT_DEFAULT } leading-relaxed text-balance text-sm lg:text-base list-disc space-y-3 pl-14`}
         >
             {items.map((item, i) => (
                 <motion.li

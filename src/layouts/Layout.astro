@@ -4,6 +4,8 @@ import '@fontsource-variable/onest';
 import Navbar from '../components/Navbar.astro'
 import Footer from '../components/Footer.astro'
 import ScrollToTop from "../components/ScrollToTop";
+import { ThemeProvider } from '../context/ThemeContext';
+import '../styles/global.css';
 
 interface Props {
 	title: string;
@@ -23,28 +25,12 @@ const { title, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{ title }</title>
 	</head>
-	<body>
-		<Navbar />
-		<slot />
-		<Footer />
-		<ScrollToTop client:load />
+	<body class="bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text">
+		<ThemeProvider client:only="react">
+			<Navbar />
+			<slot />
+			<Footer />
+			<ScrollToTop client:load />
+		</ThemeProvider>
 	</body>
 </html>
-
-<style is:global>
-	html {
-  		font-family: 'Onest Variable', sans-serif;
-		scroll-behavior: smooth;
-	}		
-	body {
-		background: #fff;
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh; 
-	}
-	@media(prefers-reduced-motion: reduce){
-		html {
-			scroll-behavior: auto;
-		}
-	}
-</style>

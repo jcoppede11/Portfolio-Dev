@@ -1,5 +1,5 @@
 ---
-import { COLORS } from "../config/globalStyles";
+import { ICONS } from "../config/globalStyles";
 
 // Import COMPONENTS
 import SectionContainer from "../components/structuresContainer/SectionContainer.astro";
@@ -42,7 +42,7 @@ const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(B
 		<SectionContainer id="jjc-experience">
 			<GridContainer>
 				<H4TitleBold title="Experiencia laboral">
-					<Briefcase slot="icon" class=`${COLORS.ICON_SIZE}` />
+					<Briefcase slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H4TitleBold>
 
 				<Experience />
@@ -52,7 +52,7 @@ const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(B
 		<SectionContainer id="jjc-technology">
 			<GridContainer>
 				<H4TitleBold title="Tecnologías y habilidades">
-					<Technology slot="icon" class=`${COLORS.ICON_SIZE}` />
+					<Technology slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H4TitleBold>
 
 				<TechnologyJob />
@@ -62,7 +62,7 @@ const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(B
 		<SectionContainer id="jjc-projects">
 			<GridContainer>
 				<H4TitleBold title="Proyectos creados">
-					<CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` />
+					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H4TitleBold>
 
 				<CreatedProjects />
@@ -72,7 +72,7 @@ const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(B
 		<SectionContainer id="jjc-projects">
 			<GridContainer>
 				<H4TitleBold title="Proyectos en desarrollo">
-					<CodeBracket slot="icon" class=`${COLORS.ICON_SIZE}` />
+					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H4TitleBold>
 
 				<Project />
@@ -82,7 +82,7 @@ const lines = biographyData[0].paragraph.split(". ").map(l => l.trim()).filter(B
 		<SectionContainer id="jjc-contact">
 			<GridContainer>
 				<H4TitleBold title="¿Como encontrarme?">
-					<Person slot="icon" class=`${COLORS.ICON_SIZE}` />
+					<Person slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H4TitleBold>
 
 				<ContactItems client:visible items={userData} />

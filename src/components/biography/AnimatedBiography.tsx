@@ -1,6 +1,6 @@
 // src/components/AnimatedLetters.tsx
 import { motion } from "framer-motion";
-import { COLORS } from "../../config/globalStyles";
+import { TEXT } from "../../config/globalStyles";
 
 const container = {
     hidden: {},
@@ -29,7 +29,7 @@ export default function AnimatedParagraphByLines({ lines }: { lines: string[] })
             variants={container}
             initial="hidden"
             animate="show"
-            className={`${COLORS.PARAGRAPH_BIOGRAPHY_GRAY_TEXT}`}
+            className={`${TEXT.TEXT_DEFAULT} leading-relaxed text-balance text-sm lg:text-base lg:leading-loose`}
         >
             {lines.map((line, i) => (
                 <motion.span key={i} variants={word}>

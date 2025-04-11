@@ -1,5 +1,5 @@
 ---
-import { COLORS } from "../../config/globalStyles";
+import { TEXT } from "../../config/globalStyles";
 interface Props {
     job: string;
     title: string;
@@ -10,12 +10,12 @@ const { job, title, date, jobType } = Astro.props;
 ---
 
 <li>
-    <span class={`block text-md lg:text-lg mb-2 ${COLORS.TITLE_GRAY_TEXT}`}
+    <span class={`${TEXT.TEXT_DEFAULT} font-semibold items-center block text-md lg:text-lg mb-2`}
         >{job}</span
     >
     <div class="grid grid-cols-1 gap-2">
         <span class="block text-sm lg:text-base font-normal">{title}</span>
-        <span class={`${COLORS.GRAY_TEXT_SECONDARY}`}>{jobType}</span>
-        <time class={`${COLORS.GRAY_TEXT_SECONDARY} mt-1`}>{date}</time>
+        <span class={`${TEXT.TEXT_ITEM_DEFAULT} block text-sm font-normal`}>{jobType}</span>
+        <time class={`${TEXT.TEXT_ITEM_DEFAULT} block text-sm font-normal mt-1`}>{date}</time>
     </div>
 </li>

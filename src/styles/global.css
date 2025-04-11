@@ -1,0 +1,26 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #374151;
+}
+
+.dark {
+    --background-color: #374151;
+    --text-color: #ffffff;
+}
+
+html {
+    font-family: 'Onest Variable', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+@media(prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
