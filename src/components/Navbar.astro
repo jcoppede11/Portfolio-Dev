@@ -1,7 +1,8 @@
 ---
 import { FLEX } from "../config/globalStyles";
-import NavLinks from "./ui/text/NavLinks.astro";
-import {ThemeProviderIsland} from './ThemeProviderIsland'
+import { NavLinks } from "./ui/text/NavLinks";
+import HamburgerMenuClient from "./HamburgerMenuClient";
+import { ThemeProviderIsland } from "./ThemeProviderIsland";
 
 const navLinks = [
     { href: "#jjc-about-me", label: "Sobre mí" },
@@ -10,16 +11,20 @@ const navLinks = [
     { href: "#jjc-projects", label: "Proyectos" },
     { href: "#jjc-contact", label: "Contacto" },
 ];
-
 ---
 
-<nav class=`${FLEX.FLEX_JUSTIFY_CENTER} sticky top-0 z-10 bg-slate-50/90 dark:bg-slate-800/90 backdrop-blur-sm ring-1 ring-slate-900/10 py-7 px-9 w-full`>
-    <div class=`${FLEX.FLEX_JUSTIFY_CENTER} mx-auto flex-row flex-wrap gap-y-3 gap-x-10 opacity-80 w-[1120px]`>
+<nav class=`${FLEX.FLEX_JUSTIFY_CENTER} justify-between sticky top-0 z-10 bg-slate-50/90 dark:bg-[#1a1b22] backdrop-blur-sm ring-1 ring-slate-900/10 py-7 px-9 w-full`>
+    <div class="md:hidden">
+        <HamburgerMenuClient navLinks={navLinks} client:load />
+    </div>
+    <div class=`hidden md:flex ${FLEX.FLEX_JUSTIFY_CENTER} mx-auto flex-row flex-wrap gap-y-3 gap-x-10 opacity-80 w-[1120px]`>
         {
             navLinks.map((link) => (
                 <NavLinks href={link.href} label={link.label} />
             ))
         }
-        <ThemeProviderIsland client:load />          
+    </div>
+    <div class="flex justify-end">
+        <ThemeProviderIsland client:load />
     </div>
 </nav>

@@ -1,6 +1,6 @@
 ---
 import { TEXT } from '../../config/globalStyles';
-import Paragraph from '../ui/text/Paragraph.astro';
+import ParagraphCard from '../ui/text/ParagraphCard.astro';
 
 interface Props {
     title: string;
@@ -13,12 +13,12 @@ interface Props {
 const { title, description, technology, img, alt } = Astro.props;
 ---
 
-<div class="min-w-full rounded-lg shadow-lg overflow-hidden bg-white transition-all duration-300 ease-out transform hover:scale-[1.06] hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between">
+<div class="min-w-full rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-out transform hover:scale-[1.06] hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between">
     <img class="w-full h-auto max-h-64 object-cover object-center aspect-auto" src={img} alt={alt} />
 
-    <div class="p-6 flex-grow space-y-2">
+    <div class="p-6 flex-grow space-y-2 bg-slate-50/90 dark:bg-[#2a3140] shadow-lg hover:shadow-xl transition-shadow duration-300">
         <h2 class={`${TEXT.TEXT_DEFAULT} text-lg lg:text-2xl font-semibold`}>{title}</h2>
-        <Paragraph>{description}</Paragraph>
-        <Paragraph><span class="font-semibold">Tecnologías: </span>{technology}</Paragraph>
+        <ParagraphCard>{description}</ParagraphCard>
+        <ParagraphCard><span class="font-semibold">Tecnologías: </span>{technology}</ParagraphCard>
     </div>
 </div>

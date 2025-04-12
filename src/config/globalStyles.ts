@@ -1,11 +1,11 @@
 export const COLORS = {
     EXP_TEXT_SIZE: "block text-md font-normal",
-    LIST_DISC: "list-disc space-y-3 marker:text-gray-700 pl-14",
+    LIST_DISC: "list-disc space-y-3 marker:text-gray-700 dark:marker:text-[#f6f7f9] pl-14",
 };
 
 export const TEXT = {
-    TEXT_DEFAULT: "text-gray-700 dark:text-white",
-    TEXT_ITEM_DEFAULT: "text-gray-500 dark:text-white",
+    TEXT_DEFAULT: "text-gray-700 dark:text-[#f6f7f9]",
+    TEXT_ITEM_DEFAULT: "text-gray-500 dark:text-[#99a1b3]",
 }
 
 export const ICONS = {
@@ -13,7 +13,7 @@ export const ICONS = {
 }
 
 export const FLEX = {
-    FLEX_JUSTIFY_CENTER: "flex justify-center items-center",
+    FLEX_JUSTIFY_CENTER: "flex md:justify-center md:items-center",
 }
 
 export const MARGIN = {
