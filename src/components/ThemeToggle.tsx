@@ -8,7 +8,10 @@ export const ThemeToggle = () => {
 
     return (
         <button
-            onClick={toggleTheme} className={`${TEXT.TEXT_DEFAULT} cursor-pointer p-2`}>
+            aria-label="Cambiar tema de la aplicación"
+            className={`${TEXT.TEXT_DEFAULT} cursor-pointer p-2`}
+            onClick={toggleTheme} 
+        >
             {theme === 'light' ? <Moon size={24} /> : <Sun size={24} />}
         </button>
     );
