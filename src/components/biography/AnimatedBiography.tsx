@@ -12,7 +12,7 @@ const container = {
 };
 
 const word: import("framer-motion").Variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     show: {
         opacity: 1,
         y: 0,
@@ -23,19 +23,39 @@ const word: import("framer-motion").Variants = {
     },
 };
 
-export default function AnimatedParagraphByLines({ lines }: { lines: string[] }) {
+export default function AnimatedParagraphByLines({ 
+    lines,
+    imageSrc,
+    imageAlt = "Profile image",
+}: {
+    lines: string[];
+    imageSrc: string;
+    imageAlt?: string;
+}) {
     return (
         <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className={`${TEXT.TEXT_DEFAULT} leading-relaxed text-balance text-sm lg:text-base lg:leading-loose`}
+            className="flex flex-col lg:flex-row items-start gap-9"
         >
-            {lines.map((line, i) => (
-                <motion.span key={i} variants={word}>
-                    {line}
-                </motion.span>
-            ))}
+            <div
+                className={`${TEXT.TEXT_DEFAULT} leading-relaxed text-balance text-sm lg:text-base lg:leading-loose`}
+            >
+                {lines.map((line, i) => (
+                    <motion.span key={i} variants={word} className="block">
+                        {line}
+                    </motion.span>
+                ))}
+            </div>
+
+            <motion.img
+                src={imageSrc}
+                alt={imageAlt}
+                variants={word} 
+                className="w-full h-auto lg:w-64 lg:h-64 rounded-3xl object-cover shadow-lg shadow-black/20 "
+            />
         </motion.div>
     );
+
 }
