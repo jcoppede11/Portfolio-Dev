@@ -1,0 +1,22 @@
+---
+interface Props {
+    paragraph: string;
+    imageSrc: string;
+    imageAlt: string;
+}
+
+const { paragraph, imageSrc, imageAlt } = Astro.props;
+---
+
+<div class="flex flex-col lg:flex-row items-start gap-9">
+    <p class="text-gray-700 dark:text-[#f6f7f9] leading-relaxed text-balance text-sm lg:text-base lg:leading-loose">
+        {paragraph}
+    </p>
+
+    <img
+        src={imageSrc}
+        alt={imageAlt}
+        loading="lazy"
+        class="w-64 h-64 rounded-3xl object-cover shadow-lg shadow-black/20 mx-auto"
+    />
+</div>

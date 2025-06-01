@@ -17,9 +17,11 @@ const { title, description, technology, img, alt } = Astro.props;
     <img 
         src={img} 
         alt={alt}
+        loading="lazy"
         width="768"
         height="256"
-        class="w-full h-auto max-h-64 object-cover object-center aspect-auto" />
+        class="w-full h-auto max-h-64 object-cover object-center aspect-auto" 
+    />
 
     <div class="p-6 flex-grow space-y-2 bg-slate-50/90 dark:bg-[#2a3140] shadow-lg hover:shadow-xl transition-shadow duration-300">
         <h2 class={`${TEXT.TEXT_DEFAULT} text-lg lg:text-2xl font-semibold`}>{title}</h2>
