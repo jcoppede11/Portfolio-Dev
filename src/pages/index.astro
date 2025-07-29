@@ -23,11 +23,12 @@ import Person from "../components/ui/svg/Person.astro";
 // Import DATA
 import userData from '../constants/userData.json';
 import biographyData from '../constants/biographyData.json';
+import { SECTION_IDS } from "../constants/sectionIds";
 ---
 
 <Layout title="Juan J. Coppede - Software Developer." description="Desarrollando aplicaciones web eficientes y escalables">
 	<main>
-		<SectionContainer id="jjc-about-me">
+		<SectionContainer id={SECTION_IDS.aboutMe}>
 			<GridContainer>
 				<H1TitleBold title="Juan José Coppede" />
 			</GridContainer>
@@ -35,7 +36,7 @@ import biographyData from '../constants/biographyData.json';
 			<Biography paragraph={biographyData[0].paragraph} imageSrc="/img/img-profile.webp" imageAlt="Imagen de perfil" />
 		</SectionContainer>
 
-		<SectionContainer id="jjc-experience">
+		<SectionContainer id={SECTION_IDS.experience}>
 			<GridContainer>
 				<H2TitleBold title="Experiencia laboral">
 					<Briefcase slot="icon" class=`${ICONS.ICON_SIZE}` />
@@ -45,7 +46,7 @@ import biographyData from '../constants/biographyData.json';
 			</GridContainer>
 		</SectionContainer>
 
-		<SectionContainer id="jjc-technology">
+		<SectionContainer id={SECTION_IDS.technology}>
 			<GridContainer>
 				<H2TitleBold title="Tecnologías y habilidades">
 					<Technology slot="icon" class=`${ICONS.ICON_SIZE}` />
@@ -55,7 +56,7 @@ import biographyData from '../constants/biographyData.json';
 			</GridContainer>
 		</SectionContainer>
 
-		<SectionContainer id="jjc-projects">
+		<SectionContainer id={SECTION_IDS.createdProjects}>
 			<GridContainer>
 				<H2TitleBold title="Proyectos creados">
 					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
@@ -65,7 +66,7 @@ import biographyData from '../constants/biographyData.json';
 			</GridContainer>
 		</SectionContainer>
 
-		<SectionContainer id="jjc-projects">
+		<SectionContainer id={SECTION_IDS.inProgressProjects}>
 			<GridContainer>
 				<H2TitleBold title="Proyectos en desarrollo">
 					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
@@ -75,7 +76,7 @@ import biographyData from '../constants/biographyData.json';
 			</GridContainer>
 		</SectionContainer>
 
-		<SectionContainer id="jjc-contact">
+		<SectionContainer id={SECTION_IDS.contact}>
 			<GridContainer>
 				<H2TitleBold title="¿Como encontrarme?">
 					<Person slot="icon" class=`${ICONS.ICON_SIZE}` />
