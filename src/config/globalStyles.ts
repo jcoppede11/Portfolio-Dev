@@ -1,11 +1,11 @@
 export const COLORS = {
     EXP_TEXT_SIZE: "block text-md font-normal",
-    LIST_DISC: "list-disc space-y-3 marker:text-gray-700 dark:marker:text-[#f6f7f9] pl-14",
+    LIST_DISC: "list-disc space-y-3 marker:text-gray-700 pl-14",
 };
 
 export const TEXT = {
-    TEXT_DEFAULT: "text-gray-700 dark:text-[#f6f7f9]",
-    TEXT_ITEM_DEFAULT: "text-gray-500 dark:text-[#99a1b3]",
+    TEXT_DEFAULT: "text-gray-700",
+    TEXT_ITEM_DEFAULT: "text-gray-500",
 }
 
 export const ICONS = {

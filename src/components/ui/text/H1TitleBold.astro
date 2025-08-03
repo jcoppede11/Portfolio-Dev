@@ -6,7 +6,7 @@ interface Props {
     className?: string;
 }
 
-const { title = "", className = "" } = Astro.props;
+const { title, className = '' } = Astro.props;
 ---
 
 <h1 class={`${TEXT.TEXT_DEFAULT} font-semibold items-center text-2xl lg:text-4xl ${className}`}>

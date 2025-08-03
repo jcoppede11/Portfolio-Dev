@@ -23,22 +23,49 @@ import Person from "../components/ui/svg/Person.astro";
 // Import DATA
 import userData from '../constants/userData.json';
 import biographyData from '../constants/biographyData.json';
-import { SECTION_IDS } from "../constants/sectionIds";
+
+const INFO_LAYOUT = {
+	title: "Juan J. Coppede - Software Developer.",
+	description: "Desarrollando aplicaciones web eficientes y escalables",
+};
+
+const SECTION_IDS = {
+    aboutMe: "about-me",
+    experience: "experience",
+    technology: "technology",
+    createdProjects: "projects-created",
+    inProgressProjects: "projects-in-progress",
+    contact: "contact",
+};
+
+const SECTION_TITLES = {
+    titleMain: "Juan José Coppede",
+    titleExperience: "Experiencia laboral",
+    titleTechnology: "Tecnologías y habilidades",
+    titleCreatedProjects: "Proyectos creados",
+    titleInProgressProjects: "Proyectos en desarrollo",
+    titleContact: "¿Cómo encontrarme?",
+};
+
+const IMAGE_BIOGRAPHY = {
+	imageSrc: "/img/70yEMo8MP2gwJJDC1F01.webp",
+	imageAlt: "Foto de perfil",
+};
 ---
 
-<Layout title="Juan J. Coppede - Software Developer." description="Desarrollando aplicaciones web eficientes y escalables">
+<Layout title={INFO_LAYOUT.title} description={INFO_LAYOUT.description}>
 	<main>
 		<SectionContainer id={SECTION_IDS.aboutMe}>
 			<GridContainer>
-				<H1TitleBold title="Juan José Coppede" />
+				<H1TitleBold title={SECTION_TITLES.titleMain} />
 			</GridContainer>
 
-			<Biography paragraph={biographyData[0].paragraph} imageSrc="/img/img-profile.webp" imageAlt="Imagen de perfil" />
+			<Biography paragraph={biographyData[0].paragraph} imageSrc={IMAGE_BIOGRAPHY.imageSrc} imageAlt={IMAGE_BIOGRAPHY.imageAlt} />
 		</SectionContainer>
 
 		<SectionContainer id={SECTION_IDS.experience}>
 			<GridContainer>
-				<H2TitleBold title="Experiencia laboral">
+				<H2TitleBold title={SECTION_TITLES.titleExperience}>
 					<Briefcase slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H2TitleBold>
 
@@ -48,7 +75,7 @@ import { SECTION_IDS } from "../constants/sectionIds";
 
 		<SectionContainer id={SECTION_IDS.technology}>
 			<GridContainer>
-				<H2TitleBold title="Tecnologías y habilidades">
+				<H2TitleBold title={SECTION_TITLES.titleTechnology}>
 					<Technology slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H2TitleBold>
 
@@ -58,7 +85,7 @@ import { SECTION_IDS } from "../constants/sectionIds";
 
 		<SectionContainer id={SECTION_IDS.createdProjects}>
 			<GridContainer>
-				<H2TitleBold title="Proyectos creados">
+				<H2TitleBold title={SECTION_TITLES.titleCreatedProjects}>
 					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H2TitleBold>
 
@@ -68,7 +95,7 @@ import { SECTION_IDS } from "../constants/sectionIds";
 
 		<SectionContainer id={SECTION_IDS.inProgressProjects}>
 			<GridContainer>
-				<H2TitleBold title="Proyectos en desarrollo">
+				<H2TitleBold title={SECTION_TITLES.titleInProgressProjects}>
 					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H2TitleBold>
 
@@ -78,7 +105,7 @@ import { SECTION_IDS } from "../constants/sectionIds";
 
 		<SectionContainer id={SECTION_IDS.contact}>
 			<GridContainer>
-				<H2TitleBold title="¿Como encontrarme?">
+				<H2TitleBold title={SECTION_TITLES.titleContact}>
 					<Person slot="icon" class=`${ICONS.ICON_SIZE}` />
 				</H2TitleBold>
 

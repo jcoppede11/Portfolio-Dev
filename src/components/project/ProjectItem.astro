@@ -23,7 +23,7 @@ const { title, description, technology, img, alt } = Astro.props;
         class="w-full h-auto max-h-64 object-cover object-center aspect-auto" 
     />
 
-    <div class="p-6 flex-grow space-y-2 bg-slate-50/90 dark:bg-[#2a3140] shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div class="p-6 flex-grow space-y-2 bg-slate-50/90 shadow-lg hover:shadow-xl transition-shadow duration-300">
         <h2 class={`${TEXT.TEXT_DEFAULT} text-lg lg:text-2xl font-semibold`}>{title}</h2>
         <ParagraphCard>{description}</ParagraphCard>
         <ParagraphCard><span class="font-semibold">Tecnologías: </span>{technology}</ParagraphCard>
