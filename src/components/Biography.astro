@@ -1,22 +1,65 @@
 ---
+import H1TitleBold from "./ui/text/H1TitleBold.astro";
+import ParagraphBiography from "./ui/text/ParagraphBiography.astro";
+
 interface Props {
-    paragraph: string;
-    imageSrc: string;
-    imageAlt: string;
+  title?: string;
+  paragraph: string;
+  imageSrc: string;
+  imageAlt?: string;
 }
 
-const { paragraph, imageSrc, imageAlt } = Astro.props;
+const { title, paragraph, imageSrc, imageAlt } = Astro.props as Props;
 ---
+<section class="biography">
+  <div class="bio-grid">
+    <div class="bio-left">
+      {title ? <H1TitleBold title={title} className="mb-4"/> : null}
+      <ParagraphBiography>{paragraph}</ParagraphBiography>
+    </div>
 
-<div class="flex flex-col lg:flex-row items-start gap-9">
-    <p class="text-gray-700 leading-relaxed text-balance text-sm lg:text-base lg:leading-loose">
-        {paragraph}
-    </p>
+    <div class="bio-right" aria-hidden={false}>
+      <img src={imageSrc} alt={imageAlt ?? "Imagen de perfil"} class="bio-image" />
+    </div>
+  </div>
+</section>
 
-    <img
-        src={imageSrc}
-        alt={imageAlt}
-        loading="lazy"
-        class="w-64 h-64 rounded-3xl object-cover shadow-lg shadow-black/20 mx-auto"
-    />
-</div>
+<style>
+  .biography {
+    width: 100%;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: center; 
+  }
+
+  .bio-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bio-image {
+    width: 300px;
+    height: 345px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  }
+
+  @media (max-width: 1024px) {
+    .bio-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .bio-image {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+    }
+  }
+</style>

@@ -8,7 +8,6 @@ import Experience from "../components/Experience.astro";
 import Project from "../components/Project.astro";
 import CreatedProjects from "../components/CreatedProjects.astro";
 import TechnologyJob from "../components/TechnologyJob.astro";
-import H1TitleBold from "../components/ui/text/H1TitleBold.astro";
 import H2TitleBold from "../components/ui/text/H2TitleBold.astro";
 import Layout from "../layouts/Layout.astro";
 import ContactItems from "../components/contact/AnimatedList";
@@ -57,10 +56,13 @@ const IMAGE_BIOGRAPHY = {
 	<main>
 		<SectionContainer id={SECTION_IDS.aboutMe}>
 			<GridContainer>
-				<H1TitleBold title={SECTION_TITLES.titleMain} />
+				<Biography
+					title={SECTION_TITLES.titleMain}
+					paragraph={biographyData[0].paragraph}
+					imageSrc={IMAGE_BIOGRAPHY.imageSrc}
+					imageAlt={IMAGE_BIOGRAPHY.imageAlt}
+				/>
 			</GridContainer>
-
-			<Biography paragraph={biographyData[0].paragraph} imageSrc={IMAGE_BIOGRAPHY.imageSrc} imageAlt={IMAGE_BIOGRAPHY.imageAlt} />
 		</SectionContainer>
 
 		<SectionContainer id={SECTION_IDS.experience}>
