@@ -1,28 +1,32 @@
 ---
+import { Image } from 'astro:assets';
 import H1TitleBold from "./ui/text/H1TitleBold.astro";
 import ParagraphBiography from "./ui/text/ParagraphBiography.astro";
 
 interface Props {
   title?: string;
   paragraph: string;
-  imageSrc: string;
-  imageAlt?: string;
+  imageSrc: ImageMetadata;
 }
 
-const { title, paragraph, imageSrc, imageAlt } = Astro.props as Props;
+const { title, paragraph, imageSrc } = Astro.props as Props;
 ---
-<section class="biography">
-  <div class="bio-grid">
-    <div class="bio-left">
-      {title ? <H1TitleBold title={title} className="mb-4"/> : null}
-      <ParagraphBiography>{paragraph}</ParagraphBiography>
-    </div>
+<article class="biography">
+    <div class="bio-grid">
+        <div class="bio-left">
+            {title ? <H1TitleBold title={title} className="mb-4"/> : null}
+            <ParagraphBiography>{paragraph}</ParagraphBiography>
+        </div>
 
-    <div class="bio-right" aria-hidden={false}>
-      <img src={imageSrc} alt={imageAlt ?? "Imagen de perfil"} class="bio-image" />
+        <figure class="bio-right">
+            <Image 
+              src={imageSrc} 
+              alt="Imagen de perfil" 
+              class="bio-image" 
+            />
+        </figure>
     </div>
-  </div>
-</section>
+</article>
 
 <style>
   .biography {

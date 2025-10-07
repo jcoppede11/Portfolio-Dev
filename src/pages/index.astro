@@ -22,6 +22,7 @@ import Person from "../components/ui/svg/Person.astro";
 // Import DATA
 import userData from '../constants/userData.json';
 import biographyData from '../constants/biographyData.json';
+import myProfile from '../assets/img/70yEMo8MP2gwJJDC1F01.webp';
 
 const INFO_LAYOUT = {
 	title: "Juan J. Coppede - Software Developer.",
@@ -45,11 +46,6 @@ const SECTION_TITLES = {
     titleInProgressProjects: "Proyectos en desarrollo",
     titleContact: "¿Cómo encontrarme?",
 };
-
-const IMAGE_BIOGRAPHY = {
-	imageSrc: "/img/70yEMo8MP2gwJJDC1F01.webp",
-	imageAlt: "Foto de perfil",
-};
 ---
 
 <Layout title={INFO_LAYOUT.title} description={INFO_LAYOUT.description}>
@@ -59,8 +55,7 @@ const IMAGE_BIOGRAPHY = {
 				<Biography
 					title={SECTION_TITLES.titleMain}
 					paragraph={biographyData[0].paragraph}
-					imageSrc={IMAGE_BIOGRAPHY.imageSrc}
-					imageAlt={IMAGE_BIOGRAPHY.imageAlt}
+					imageSrc={myProfile}
 				/>
 			</GridContainer>
 		</SectionContainer>
