@@ -1,19 +1,23 @@
 ---
+import InputField from "./contact/InputField.astro";
+
 interface Props {
     className?: string;
 }
 
 const { className = "" } = Astro.props;
+import SubmitButton from "./contact/SubmitButton.astro";
+import TextareaCounter from "./contact/TextareaCounter.tsx";
 ---
 
 <form
     id="contact-form"
-    class={`contact-form ${className}`}
+    class={`w-full mx-auto p-8 ${className}`}
     data-loading="false"
     novalidate
 >
     <!-- Honeypot field (hidden) para detectar bots -->
-    <input
+    <!-- <input
         type="text"
         name="website"
         id="website"
@@ -21,109 +25,45 @@ const { className = "" } = Astro.props;
         tabindex="-1"
         style="position: absolute; left: -9999px; opacity: 0;"
         aria-hidden="true"
-    />
+    /> -->
 
-    <div class="form-grid">
-        <!-- Nombre -->
-        <div class="form-group">
-            <label for="name" class="form-label">
-                Nombre completo <span class="required">*</span>
-            </label>
-            <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                maxlength="50"
-                class="form-input"
-                placeholder="Tu nombre"
-                autocomplete="name"
-            />
-            <span class="error-message" id="name-error"></span>
-        </div>
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2">
+        <InputField
+            label="Nombre completo"
+            name="name"
+            id="name"
+            type="text"
+            placeholder="Tu nombre"
+            required
+            maxlength={50}
+            className=""
+        />
 
-        <!-- Email -->
-        <div class="form-group">
-            <label for="email" class="form-label">
-                Correo electrónico <span class="required">*</span>
-            </label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                maxlength="100"
-                class="form-input"
-                placeholder="tu@email.com"
-                autocomplete="email"
-            />
-            <span class="error-message" id="email-error"></span>
-        </div>
+        <InputField
+            label="Correo electrónico"
+            name="email"
+            id="email"
+            type="email"
+            placeholder="tu@email.com"
+            required
+            maxlength={100}
+            className=""
+        />
 
-        <!-- Asunto -->
-        <div class="form-group full-width">
-            <label for="subject" class="form-label">
-                Asunto <span class="required">*</span>
-            </label>
-            <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                maxlength="100"
-                class="form-input"
-                placeholder="¿En qué puedo ayudarte?"
-            />
-            <span class="error-message" id="subject-error"></span>
-        </div>
+        <InputField
+            label="Asunto"
+            name="subject"
+            id="subject"
+            type="text"
+            placeholder="¿En qué puedo ayudarte?"
+            required
+            maxlength={100}
+            fullWidth
+        />
 
-        <!-- Mensaje -->
-        <div class="form-group full-width">
-            <label for="message" class="form-label">
-                Mensaje <span class="required">*</span>
-            </label>
-            <textarea
-                id="message"
-                name="message"
-                required
-                maxlength="1000"
-                rows="5"
-                class="form-textarea"
-                placeholder="Cuéntame sobre tu proyecto..."></textarea>
-            <span class="error-message" id="message-error"></span>
-            <div class="char-counter">
-                <span id="message-count">0</span>/1000 caracteres
-            </div>
-        </div>
+        <TextareaCounter client:load />
 
-        <!-- Botón de envío -->
-        <div class="form-group full-width">
-            <button type="submit" class="submit-button" id="submit-btn">
-                <span class="button-text">Enviar mensaje</span>
-                <span class="loading-spinner" style="display: none;">
-                    <svg
-                        class="animate-spin"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                    >
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            stroke-width="4"
-                            fill="none"
-                            opacity="0.3"></circle>
-                        <path
-                            d="m12,2a10,10 0 0,1 10,10"
-                            stroke="currentColor"
-                            stroke-width="4"
-                            fill="none"></path>
-                    </svg>
-                </span>
-            </button>
-        </div>
+        <SubmitButton label="Enviar mensaje" id="submit-btn" />
     </div>
 
     <!-- Mensaje de resultado -->
@@ -133,341 +73,214 @@ const { className = "" } = Astro.props;
             <span class="result-message"></span>
         </div>
     </div>
-</form>
 
-<style>
-    .contact-form {
-        width: 100%;
-        margin: 0 auto;
-        padding: 2rem;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            // Importar esquema de validación
+            const { contactSchema } = await import("../shared/contactSchema");
 
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
+            const form = document.getElementById(
+                "contact-form",
+            ) as HTMLFormElement;
+            const submitBtn = document.getElementById(
+                "submit-btn",
+            ) as HTMLButtonElement;
+            const buttonText = submitBtn.querySelector(
+                ".button-text",
+            ) as HTMLElement;
+            const loadingSpinner = submitBtn.querySelector(
+                ".loading-spinner",
+            ) as HTMLElement;
+            const formResult = document.getElementById(
+                "form-result",
+            ) as HTMLElement;
+            const messageTextarea = document.getElementById(
+                "message",
+            ) as HTMLTextAreaElement;
+            const messageCount = document.getElementById(
+                "message-count",
+            ) as HTMLElement;
 
-    .form-group {
-        display: flex;
-        flex-direction: column;
-    }
+            // Contador de caracteres para el mensaje
+            messageTextarea.addEventListener("input", () => {
+                const count = messageTextarea.value.length;
+                messageCount.textContent = count.toString();
 
-    .form-group.full-width {
-        grid-column: 1 / -1;
-    }
-
-    .form-label {
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-    }
-
-    .required {
-        color: #ef4444;
-    }
-
-    .form-input,
-    .form-textarea {
-        padding: 0.75rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 1rem;
-        transition: all 0.2s ease;
-        background: #fafafa;
-    }
-
-    .form-input:focus,
-    .form-textarea:focus {
-        outline: none;
-        border-color: #3b82f6;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
-
-    .form-input.error,
-    .form-textarea.error {
-        border-color: #ef4444;
-        background: #fef2f2;
-    }
-
-    .form-textarea {
-        resize: vertical;
-        min-height: 120px;
-    }
-
-    .error-message {
-        color: #ef4444;
-        font-size: 0.75rem;
-        margin-top: 0.25rem;
-        min-height: 1rem;
-    }
-
-    .char-counter {
-        font-size: 0.75rem;
-        color: #6b7280;
-        text-align: right;
-        margin-top: 0.25rem;
-    }
-
-    .submit-button {
-        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-        color: white;
-        padding: 0.875rem 2rem;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-    }
-
-    .submit-button:hover:not(:disabled) {
-        background: linear-gradient(135deg, #2563eb, #1e40af);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-    }
-
-    .submit-button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-        transform: none;
-    }
-
-    .loading-spinner svg {
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    .form-result {
-        margin-top: 1.5rem;
-        padding: 1rem;
-        border-radius: 8px;
-        border: 1px solid;
-    }
-
-    .form-result.success {
-        background: #f0fdf4;
-        border-color: #22c55e;
-        color: #166534;
-    }
-
-    .form-result.error {
-        background: #fef2f2;
-        border-color: #ef4444;
-        color: #dc2626;
-    }
-
-    .result-content {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .result-icon::before {
-        content: "✓";
-        font-weight: bold;
-    }
-
-    .form-result.error .result-icon::before {
-        content: "✕";
-    }
-
-    @media (max-width: 640px) {
-        .contact-form {
-            padding: 1.5rem;
-            margin: 0 1rem;
-        }
-
-        .form-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", async () => {
-        // Importar esquema de validación del cliente
-        const { clientContactSchema } = await import("../config/contactSchema");
-
-        const form = document.getElementById("contact-form") as HTMLFormElement;
-        const submitBtn = document.getElementById(
-            "submit-btn",
-        ) as HTMLButtonElement;
-        const buttonText = submitBtn.querySelector(
-            ".button-text",
-        ) as HTMLElement;
-        const loadingSpinner = submitBtn.querySelector(
-            ".loading-spinner",
-        ) as HTMLElement;
-        const formResult = document.getElementById(
-            "form-result",
-        ) as HTMLElement;
-        const messageTextarea = document.getElementById(
-            "message",
-        ) as HTMLTextAreaElement;
-        const messageCount = document.getElementById(
-            "message-count",
-        ) as HTMLElement;
-
-        // Contador de caracteres para el mensaje
-        messageTextarea.addEventListener("input", () => {
-            const count = messageTextarea.value.length;
-            messageCount.textContent = count.toString();
-
-            if (count > 1000) {
-                messageCount.style.color = "#ef4444";
-            } else if (count > 900) {
-                messageCount.style.color = "#f59e0b";
-            } else {
-                messageCount.style.color = "#6b7280";
-            }
-        });
-
-        // Manejar envío del formulario
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            if (form.dataset.loading === "true") return;
-
-            // Limpiar errores previos
-            clearErrors();
-            hideResult();
-
-            // Obtener datos del formulario
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-
-            // Validación del lado del cliente
-            const validation = clientContactSchema.safeParse(data);
-
-            if (!validation.success) {
-                showValidationErrors(validation.error.errors);
-                return;
-            }
-
-            // Mostrar loading
-            setLoading(true);
-
-            try {
-                const response = await fetch("/api/contact", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    showResult("success", result.message);
-                    form.reset();
-                    messageCount.textContent = "0";
+                if (count > 1000) {
+                    messageCount.style.color = "#ef4444";
+                } else if (count > 900) {
+                    messageCount.style.color = "#f59e0b";
                 } else {
-                    if (result.details) {
-                        showValidationErrors(result.details);
-                    } else {
-                        showResult(
-                            "error",
-                            result.error || "Error al enviar el mensaje",
-                        );
-                    }
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                showResult("error", "Error de conexión. Inténtalo más tarde.");
-            } finally {
-                setLoading(false);
-            }
-        });
-
-        function setLoading(loading: boolean) {
-            form.dataset.loading = loading.toString();
-            submitBtn.disabled = loading;
-
-            if (loading) {
-                buttonText.style.display = "none";
-                loadingSpinner.style.display = "block";
-            } else {
-                buttonText.style.display = "block";
-                loadingSpinner.style.display = "none";
-            }
-        }
-
-        function clearErrors() {
-            const errorElements = form.querySelectorAll(".error-message");
-            const inputElements = form.querySelectorAll(
-                ".form-input, .form-textarea",
-            );
-
-            errorElements.forEach((el) => (el.textContent = ""));
-            inputElements.forEach((el) => el.classList.remove("error"));
-        }
-
-        function showValidationErrors(errors: any[]) {
-            errors.forEach((error) => {
-                const field =
-                    typeof error === "object" && "field" in error
-                        ? error.field
-                        : error.path?.[0];
-                const message =
-                    typeof error === "object" && "message" in error
-                        ? error.message
-                        : error.message;
-
-                if (field) {
-                    const input = form.querySelector(
-                        `[name="${field}"]`,
-                    ) as HTMLElement;
-                    const errorElement = document.getElementById(
-                        `${field}-error`,
-                    );
-
-                    if (input && errorElement) {
-                        input.classList.add("error");
-                        errorElement.textContent = message;
-                    }
+                    messageCount.style.color = "#6b7280";
                 }
             });
-        }
 
-        function showResult(type: "success" | "error", message: string) {
-            formResult.className = `form-result ${type}`;
-            formResult.querySelector(".result-message")!.textContent = message;
-            formResult.style.display = "block";
+            // Manejar envío del formulario
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
 
-            // Scroll al resultado
-            formResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                if (form.dataset.loading === "true") return;
 
-            // Auto-hide success messages
-            if (type === "success") {
-                setTimeout(() => {
-                    hideResult();
-                }, 5000);
+                // Limpiar errores previos
+                clearErrors();
+                hideResult();
+
+                // Obtener datos del formulario
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // Validación del lado del cliente
+                const validation = contactSchema.safeParse(data);
+
+                if (!validation.success) {
+                    showValidationErrors(validation.error.errors);
+                    return;
+                }
+
+                // Mostrar loading
+                setLoading(true);
+
+                try {
+                    const response = await fetch("/api/contact", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        showResult("success", result.message);
+                        form.reset();
+                        messageCount.textContent = "0";
+                    } else {
+                        if (result.details) {
+                            showValidationErrors(result.details);
+                        } else {
+                            showResult(
+                                "error",
+                                result.error || "Error al enviar el mensaje",
+                            );
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    showResult(
+                        "error",
+                        "Error de conexión. Inténtalo más tarde.",
+                    );
+                } finally {
+                    setLoading(false);
+                }
+            });
+
+            function setLoading(loading: boolean) {
+                form.dataset.loading = loading.toString();
+                submitBtn.disabled = loading;
+
+                if (loading) {
+                    buttonText.style.display = "none";
+                    loadingSpinner.style.display = "block";
+                } else {
+                    buttonText.style.display = "block";
+                    loadingSpinner.style.display = "none";
+                }
             }
-        }
 
-        function hideResult() {
-            formResult.style.display = "none";
-        }
-    });
-</script>
+            function clearErrors() {
+                const errorElements = form.querySelectorAll(".error-message");
+                const inputElements = form.querySelectorAll(
+                    ".form-input, .form-textarea",
+                );
+
+                errorElements.forEach((el) => (el.textContent = ""));
+                inputElements.forEach((el) => {
+                    el.classList.remove("error");
+                    el.classList.remove("border-red-500");
+                    el.classList.remove("bg-red-50");
+                });
+            }
+
+            function showValidationErrors(errors: any[]) {
+                errors.forEach((error) => {
+                    const field =
+                        typeof error === "object" && "field" in error
+                            ? error.field
+                            : error.path?.[0];
+                    const message =
+                        typeof error === "object" && "message" in error
+                            ? error.message
+                            : error.message;
+
+                    if (field) {
+                        const input = form.querySelector(
+                            `[name="${field}"]`,
+                        ) as HTMLElement;
+                        const errorElement = document.getElementById(
+                            `${field}-error`,
+                        );
+
+                        if (input && errorElement) {
+                            input.classList.add("error");
+                            // Add Tailwind error visuals
+                            input.classList.add("border-red-500");
+                            input.classList.add("bg-red-50");
+                            errorElement.textContent = message;
+                        }
+                    }
+                });
+            }
+
+            function showResult(type: "success" | "error", message: string) {
+                // Reset classes
+                formResult.classList.remove(
+                    "hidden",
+                    "border-red-500",
+                    "bg-red-50",
+                    "text-red-700",
+                    "border-green-500",
+                    "bg-green-50",
+                    "text-green-700",
+                );
+                formResult.querySelector(".result-message")!.textContent =
+                    message;
+
+                if (type === "success") {
+                    formResult.classList.add(
+                        "border-green-500",
+                        "bg-green-50",
+                        "text-green-700",
+                    );
+                } else {
+                    formResult.classList.add(
+                        "border-red-500",
+                        "bg-red-50",
+                        "text-red-700",
+                    );
+                }
+
+                // Show
+                formResult.classList.remove("hidden");
+
+                // Scroll al resultado
+                formResult.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                });
+
+                // Auto-hide success messages
+                if (type === "success") {
+                    setTimeout(() => {
+                        hideResult();
+                    }, 5000);
+                }
+            }
+
+            function hideResult() {
+                formResult.classList.add("hidden");
+            }
+        });
+    </script>
+</form>

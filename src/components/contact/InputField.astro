@@ -1,0 +1,72 @@
+---
+interface Props {
+    label: string;
+    name: string;
+    id?: string;
+    type?: string; // 'text' | 'email' | 'textarea'
+    placeholder?: string;
+    required?: boolean;
+    maxlength?: number;
+    rows?: number;
+    className?: string;
+    fullWidth?: boolean;
+}
+
+const {
+    label,
+    name,
+    id = name,
+    type = "text",
+    placeholder = "",
+    required = false,
+    maxlength,
+    rows = 4,
+    className = "",
+    fullWidth = false,
+} = Astro.props as Props;
+
+const containerClass = fullWidth ? "form-group full-width" : "form-group";
+const inputClass = type === "textarea" ? "form-textarea" : "form-input";
+---
+
+<div class={containerClass}>
+    <label for={id} class="form-label">
+        {label}
+        {required ? <span class="required">*</span> : null}
+    </label>
+
+    {
+        type === "textarea" ? (
+            <textarea
+                id={id}
+                name={name}
+                required={required}
+                maxlength={maxlength}
+                rows={rows}
+                class={`${inputClass} ${className} w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm leading-normal focus:outline-none focus:ring-2 focus:ring-blue-300`}
+                placeholder={placeholder}
+            />
+        ) : (
+            <input
+                type={type as any}
+                id={id}
+                name={name}
+                required={required}
+                maxlength={maxlength}
+                class={`${inputClass} ${className} w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300`}
+                placeholder={placeholder}
+            />
+        )
+    }
+
+    <span class={`error-message text-xs text-red-600 mt-1`} id={`${name}-error`}
+    ></span>
+
+    {
+        name === "message" ? (
+            <div class="char-counter text-xs text-gray-500 mt-1">
+                <span id="message-count">0</span>/1000 caracteres
+            </div>
+        ) : null
+    }
+</div>

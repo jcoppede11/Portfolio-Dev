@@ -1,15 +1,15 @@
 import type { APIRoute } from 'astro';
-import { contactSchema } from '../../config/contactSchema';
+import { contactSchema } from '../../shared/contactSchema';
 
 export const POST: APIRoute = async ({ request }) => {
     try {
-        // Verificar Content-Type
         const contentType = request.headers.get('content-type');
+
         if (!contentType?.includes('application/json')) {
             return new Response(
                 JSON.stringify({
                     success: false,
-                    error: 'Content-Type debe ser application/json'
+                    error: 'Content-Type inválido. Se espera application/json'
                 }),
                 {
                     status: 400,
@@ -18,7 +18,6 @@ export const POST: APIRoute = async ({ request }) => {
             );
         }
 
-        // Parsear y validar datos
         const formData = await request.json();
         const result = contactSchema.safeParse(formData);
 
@@ -31,7 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
             return new Response(
                 JSON.stringify({
                     success: false,
-                    error: 'Datos de formulario inválidos',
+                    error: 'Datos inválidos',
                     details: errors
                 }),
                 {
@@ -42,18 +41,18 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         // Verificar honeypot (campo website debe estar vacío)
-        if (result.data.website) {
-            return new Response(
-                JSON.stringify({
-                    success: false,
-                    error: 'Solicitud no válida'
-                }),
-                {
-                    status: 400,
-                    headers: { 'Content-Type': 'application/json' }
-                }
-            );
-        }
+        // if (result.data.website) {
+        //     return new Response(
+        //         JSON.stringify({
+        //             success: false,
+        //             error: 'Solicitud no válida'
+        //         }),
+        //         {
+        //             status: 400,
+        //             headers: { 'Content-Type': 'application/json' }
+        //         }
+        //     );
+        // }
 
         // Rate limiting básico por IP (en producción usar Redis o similar)
         const clientIP = request.headers.get('x-forwarded-for') ||
@@ -78,7 +77,7 @@ export const POST: APIRoute = async ({ request }) => {
             ip: clientIP
         });
 
-        // Simular envío de email (reemplazar con tu lógica de envío real)
+        // Reemplazar envío de email
         await simulateEmailSend({ name, email, subject, message });
 
         return new Response(
