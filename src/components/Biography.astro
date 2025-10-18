@@ -21,7 +21,9 @@ const { title, paragraph, imageSrc } = Astro.props as Props;
         <figure class="bio-right">
             <Image 
               src={imageSrc} 
-              alt="Imagen de perfil" 
+              alt="Imagen de perfil"
+              format="webp"
+              loading="eager"
               class="bio-image" 
             />
         </figure>
@@ -35,7 +37,7 @@ const { title, paragraph, imageSrc } = Astro.props as Props;
 
   .bio-grid {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 250px;
     gap: 2rem;
     align-items: center; 
   }
@@ -47,10 +49,10 @@ const { title, paragraph, imageSrc } = Astro.props as Props;
   }
 
   .bio-image {
-    width: 300px;
-    height: 345px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: 100%;
     box-shadow: 0 10px 20px rgba(0,0,0,0.12);
   }
 

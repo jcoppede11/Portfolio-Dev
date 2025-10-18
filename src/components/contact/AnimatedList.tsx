@@ -12,6 +12,7 @@ const container = {
 
 type ContactItem = {
     label: string;
+    ariaLabel: string;
     href: string;
     handle: string;
 };
@@ -45,6 +46,7 @@ export default function ContactItems({ items }: { items: ContactItem[] }) {
                     {item.label}:{" "}
                     <a
                         href={item.href}
+                        aria-label={item.ariaLabel}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline"

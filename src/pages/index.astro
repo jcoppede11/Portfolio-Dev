@@ -5,25 +5,21 @@ import { ICONS } from "../config/globalStyles";
 import SectionContainer from "../components/structuresContainer/SectionContainer.astro";
 import GridContainer from "../components/structuresContainer/GridContainer.astro";
 import Experience from "../components/Experience.astro";
-import Project from "../components/Project.astro";
-import CreatedProjects from "../components/CreatedProjects.astro";
 import TechnologyJob from "../components/TechnologyJob.astro";
 import H2TitleBold from "../components/ui/text/H2TitleBold.astro";
 import Layout from "../layouts/Layout.astro";
 import ContactItems from "../components/contact/AnimatedList";
-import ContactForm from "../components/ContactForm.astro";
 import Biography from "../components/Biography.astro";
 
 // Import SVG
 import Briefcase from "../components/ui/svg/Briefcase.astro";
-import CodeBracket from "../components/ui/svg/CodeBracket.astro";
 import Technology from "../components/ui/svg/Technology.astro";
 import Person from "../components/ui/svg/Person.astro";
 
 // Import DATA
 import userData from "../constants/userData.json";
 import biographyData from "../constants/biographyData.json";
-import myProfile from "../assets/img/70yEMo8MP2gwJJDC1F01.webp";
+import myProfile from "../assets/70yEMo8MP2gwJJDC1F01.webp";
 
 const INFO_LAYOUT = {
 	title: "Juan J. Coppede - Software Developer.",
@@ -34,9 +30,6 @@ const SECTION_IDS = {
 	aboutMe: "about-me",
 	experience: "experience",
 	technology: "technology",
-	createdProjects: "projects-created",
-	inProgressProjects: "projects-in-progress",
-	contactForm: "contact-form",
 	contact: "contact",
 };
 
@@ -44,9 +37,6 @@ const SECTION_TITLES = {
 	titleMain: "Juan José Coppede",
 	titleExperience: "Experiencia laboral",
 	titleTechnology: "Tecnologías y habilidades",
-	titleCreatedProjects: "Proyectos creados",
-	titleInProgressProjects: "Proyectos en desarrollo",
-	titleContactForm: "Enviame un mensaje y me pondré en contacto contigo.",
 	titleContact: "¿Cómo encontrarme?",
 };
 ---
@@ -82,37 +72,6 @@ const SECTION_TITLES = {
 				<TechnologyJob />
 			</GridContainer>
 		</SectionContainer>
-
-		<SectionContainer id={SECTION_IDS.createdProjects}>
-			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleCreatedProjects}>
-					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
-
-				<CreatedProjects />
-			</GridContainer>
-		</SectionContainer>
-
-		<SectionContainer id={SECTION_IDS.inProgressProjects}>
-			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleInProgressProjects}>
-					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
-
-				<Project />
-			</GridContainer>
-		</SectionContainer>
-
-		<SectionContainer id={SECTION_IDS.contactForm}>
-			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleContactForm}>
-					<Person slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
-
-				<ContactForm />
-			</GridContainer>
-		</SectionContainer>
-
 
 		<SectionContainer id={SECTION_IDS.contact}>
 			<GridContainer>
