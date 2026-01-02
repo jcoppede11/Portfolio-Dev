@@ -1,0 +1,20 @@
+---
+import { TEXT } from "../../config/globalStyles";
+
+interface Props {
+    title: string;
+    year: string;
+    link: string;
+}
+
+const { title, year, link } = Astro.props;
+---
+
+<li>
+        <div class={`${TEXT.TEXT_DEFAULT} font-semibold block text-md lg:text-lg mb-2`}>Año {year}</div>
+        <div class="space-y-1">
+            <a href={link} target="_blank" rel="noopener noreferrer" class="inline-block cursor-pointer hover:underline transition-all duration-200">
+                <span class={`${TEXT.TEXT_DEFAULT} text-md lg:text-base`}>{title}</span>
+            </a>
+        </div>
+</li>

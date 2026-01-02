@@ -1,0 +1,18 @@
+---
+import ProjectsListItem from './project/ProjectsListItem.astro';
+import OrderList from "./ui/list/OrderList.astro";
+
+const PROJECTS = [
+    {
+        year: '2025',
+        title: 'Centro de Terapias Cognitivas',
+        link: 'https://www.fundacionctc.com.ar/',
+    },
+]
+---
+
+<OrderList className='space-y-8'>
+    {
+        PROJECTS.map(project => ( <ProjectsListItem {...project} /> ))
+    }
+</OrderList>

@@ -5,6 +5,7 @@ import { ICONS } from "../config/globalStyles";
 import SectionContainer from "../components/structuresContainer/SectionContainer.astro";
 import GridContainer from "../components/structuresContainer/GridContainer.astro";
 import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
 import TechnologyJob from "../components/TechnologyJob.astro";
 import H2TitleBold from "../components/ui/text/H2TitleBold.astro";
 import Layout from "../layouts/Layout.astro";
@@ -13,6 +14,7 @@ import Biography from "../components/Biography.astro";
 
 // Import SVG
 import Briefcase from "../components/ui/svg/Briefcase.astro";
+import CodeBracket from "../components/ui/svg/CodeBracket.astro";
 import Technology from "../components/ui/svg/Technology.astro";
 import Person from "../components/ui/svg/Person.astro";
 
@@ -29,6 +31,7 @@ const INFO_LAYOUT = {
 const SECTION_IDS = {
 	aboutMe: "about-me",
 	experience: "experience",
+	projects: "projects",
 	technology: "technology",
 	contact: "contact",
 };
@@ -36,6 +39,7 @@ const SECTION_IDS = {
 const SECTION_TITLES = {
 	titleMain: "Juan José Coppede",
 	titleExperience: "Experiencia laboral",
+	titleProjects: "Mis proyectos",
 	titleTechnology: "Tecnologías y habilidades",
 	titleContact: "¿Cómo encontrarme?",
 };
@@ -60,6 +64,16 @@ const SECTION_TITLES = {
 				</H2TitleBold>
 
 				<Experience />
+			</GridContainer>
+		</SectionContainer>
+
+		<SectionContainer id={SECTION_IDS.projects}>
+			<GridContainer>
+				<H2TitleBold title={SECTION_TITLES.titleProjects}>
+					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
+				</H2TitleBold>
+
+				<Projects />
 			</GridContainer>
 		</SectionContainer>
 
