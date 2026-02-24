@@ -7,7 +7,7 @@ import GridContainer from "../components/structuresContainer/GridContainer.astro
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import TechnologyJob from "../components/TechnologyJob.astro";
-import H2TitleBold from "../components/ui/text/H2TitleBold.astro";
+import HeaderTitle from "../components/ui/text/HeaderTitle.astro";
 import Layout from "../layouts/Layout.astro";
 import ContactItems from "../components/contact/AnimatedList";
 import Biography from "../components/Biography.astro";
@@ -59,9 +59,9 @@ const SECTION_TITLES = {
 
 		<SectionContainer id={SECTION_IDS.experience}>
 			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleExperience}>
+				<HeaderTitle title={SECTION_TITLES.titleExperience}>
 					<Briefcase slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
+				</HeaderTitle>
 
 				<Experience />
 			</GridContainer>
@@ -69,9 +69,9 @@ const SECTION_TITLES = {
 
 		<SectionContainer id={SECTION_IDS.projects}>
 			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleProjects}>
+				<HeaderTitle title={SECTION_TITLES.titleProjects}>
 					<CodeBracket slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
+				</HeaderTitle>
 
 				<Projects />
 			</GridContainer>
@@ -79,9 +79,9 @@ const SECTION_TITLES = {
 
 		<SectionContainer id={SECTION_IDS.technology}>
 			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleTechnology}>
+				<HeaderTitle title={SECTION_TITLES.titleTechnology}>
 					<Technology slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
+				</HeaderTitle>
 
 				<TechnologyJob />
 			</GridContainer>
@@ -89,9 +89,9 @@ const SECTION_TITLES = {
 
 		<SectionContainer id={SECTION_IDS.contact}>
 			<GridContainer>
-				<H2TitleBold title={SECTION_TITLES.titleContact}>
+				<HeaderTitle title={SECTION_TITLES.titleContact}>
 					<Person slot="icon" class=`${ICONS.ICON_SIZE}` />
-				</H2TitleBold>
+				</HeaderTitle>
 
 				<ContactItems client:visible items={userData} />					
 			</GridContainer>

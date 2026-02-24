@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import H1TitleBold from "./ui/text/H1TitleBold.astro";
+import HeaderTitle from "./ui/text/HeaderTitle.astro";
 import ParagraphBiography from "./ui/text/ParagraphBiography.astro";
 
 interface Props {
@@ -14,7 +14,7 @@ const { title, paragraph, imageSrc } = Astro.props as Props;
 <article class="biography">
     <div class="bio-grid">
         <div class="bio-left">
-            {title ? <H1TitleBold title={title} className="mb-4"/> : null}
+            {title ? <HeaderTitle title={title} level={1} className="mb-4"/> : null}
             <ParagraphBiography>{paragraph}</ParagraphBiography>
         </div>
 
